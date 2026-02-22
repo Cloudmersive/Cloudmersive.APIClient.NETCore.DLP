@@ -1,8 +1,8 @@
 ﻿{
 
-    "packageName": "Cloudmersive.APIClient.NETCore.Phishing",
-    "packageVersion": "1.1.4",
+    "packageName": "Cloudmersive.APIClient.NETCore.DLP",
+    "packageVersion": "1.1.0",
     "netCoreProjectFile": "true",
-    "packageGuid": "be4bc5a5-a1f7-4174-9376-21c0bc7b2001",
+    "packageGuid": "149992ef-45fe-46a2-99df-49011a965a72",
     "targetFramework": "v5.0"
 }
