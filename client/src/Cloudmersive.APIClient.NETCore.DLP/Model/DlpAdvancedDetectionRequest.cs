@@ -67,7 +67,8 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
         /// <param name="allowHealthUniversalRecordLocator">Set to true to allow health universal record locators (URLs) in the input text and not flag them as PHI..</param>
         /// <param name="allowBiometrics">Set to true to allow biometric data references (e.g. fingerprints, retinal scans, voiceprints) in the input text and not flag them as PII..</param>
         /// <param name="provideAnalysisRationale">Set to true to include a natural language rationale explaining why each detection conclusion was formed..</param>
-        public DlpAdvancedDetectionRequest(string inputText = default(string), bool? allowEmailAddress = default(bool?), bool? allowPhoneNumber = default(bool?), bool? allowStreetAddress = default(bool?), bool? allowPersonName = default(bool?), bool? allowBirthDate = default(bool?), bool? allowPassportNumber = default(bool?), bool? allowDriversLicense = default(bool?), bool? allowSocialSecurityNumber = default(bool?), bool? allowTaxpayerID = default(bool?), bool? allowCreditCardNumber = default(bool?), bool? allowCreditCardExpirationDate = default(bool?), bool? allowCreditCardVerificationCode = default(bool?), bool? allowBankAccountNumber = default(bool?), bool? allowIBAN = default(bool?), bool? allowHealthInsuranceNumber = default(bool?), bool? allowBearerToken = default(bool?), bool? allowHttpCookie = default(bool?), bool? allowPrivateKeys = default(bool?), bool? allowCredentials = default(bool?), bool? allowDeepWebUrls = default(bool?), bool? allowSourceCode = default(bool?), bool? allowIpAddress = default(bool?), bool? allowMacAddress = default(bool?), bool? allowHealthInsuranceMemberID = default(bool?), bool? allowHealthInjuryOrDisease = default(bool?), bool? allowHealthTypeOfTreatment = default(bool?), bool? allowHealthDateAndTimeOfTreatment = default(bool?), bool? allowHealthPlanBeneficiaryNumber = default(bool?), bool? allowHealthPaymentsMadeForTreatment = default(bool?), bool? allowVehicleID = default(bool?), bool? allowDeviceID = default(bool?), bool? allowNamesOfRelatives = default(bool?), bool? allowHealthUniversalRecordLocator = default(bool?), bool? allowBiometrics = default(bool?), bool? provideAnalysisRationale = default(bool?))
+        /// <param name="customPolicyID">Apply a Custom Policy for DLP Enforcement by providing the ID; to create a Custom Policy,  navigate to the Cloudmersive Management Portal and select Custom Policies.  Requires Managed Instance or Private Cloud.</param>
+        public DlpAdvancedDetectionRequest(string inputText = default(string), bool? allowEmailAddress = default(bool?), bool? allowPhoneNumber = default(bool?), bool? allowStreetAddress = default(bool?), bool? allowPersonName = default(bool?), bool? allowBirthDate = default(bool?), bool? allowPassportNumber = default(bool?), bool? allowDriversLicense = default(bool?), bool? allowSocialSecurityNumber = default(bool?), bool? allowTaxpayerID = default(bool?), bool? allowCreditCardNumber = default(bool?), bool? allowCreditCardExpirationDate = default(bool?), bool? allowCreditCardVerificationCode = default(bool?), bool? allowBankAccountNumber = default(bool?), bool? allowIBAN = default(bool?), bool? allowHealthInsuranceNumber = default(bool?), bool? allowBearerToken = default(bool?), bool? allowHttpCookie = default(bool?), bool? allowPrivateKeys = default(bool?), bool? allowCredentials = default(bool?), bool? allowDeepWebUrls = default(bool?), bool? allowSourceCode = default(bool?), bool? allowIpAddress = default(bool?), bool? allowMacAddress = default(bool?), bool? allowHealthInsuranceMemberID = default(bool?), bool? allowHealthInjuryOrDisease = default(bool?), bool? allowHealthTypeOfTreatment = default(bool?), bool? allowHealthDateAndTimeOfTreatment = default(bool?), bool? allowHealthPlanBeneficiaryNumber = default(bool?), bool? allowHealthPaymentsMadeForTreatment = default(bool?), bool? allowVehicleID = default(bool?), bool? allowDeviceID = default(bool?), bool? allowNamesOfRelatives = default(bool?), bool? allowHealthUniversalRecordLocator = default(bool?), bool? allowBiometrics = default(bool?), bool? provideAnalysisRationale = default(bool?), string customPolicyID = default(string))
         {
             this.InputText = inputText;
             this.AllowEmailAddress = allowEmailAddress;
@@ -105,6 +106,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
             this.AllowHealthUniversalRecordLocator = allowHealthUniversalRecordLocator;
             this.AllowBiometrics = allowBiometrics;
             this.ProvideAnalysisRationale = provideAnalysisRationale;
+            this.CustomPolicyID = customPolicyID;
         }
         
         /// <summary>
@@ -360,6 +362,13 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
         public bool? ProvideAnalysisRationale { get; set; }
 
         /// <summary>
+        /// Apply a Custom Policy for DLP Enforcement by providing the ID; to create a Custom Policy,  navigate to the Cloudmersive Management Portal and select Custom Policies.  Requires Managed Instance or Private Cloud
+        /// </summary>
+        /// <value>Apply a Custom Policy for DLP Enforcement by providing the ID; to create a Custom Policy,  navigate to the Cloudmersive Management Portal and select Custom Policies.  Requires Managed Instance or Private Cloud</value>
+        [DataMember(Name="CustomPolicyID", EmitDefaultValue=false)]
+        public string CustomPolicyID { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -403,6 +412,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
             sb.Append("  AllowHealthUniversalRecordLocator: ").Append(AllowHealthUniversalRecordLocator).Append("\n");
             sb.Append("  AllowBiometrics: ").Append(AllowBiometrics).Append("\n");
             sb.Append("  ProvideAnalysisRationale: ").Append(ProvideAnalysisRationale).Append("\n");
+            sb.Append("  CustomPolicyID: ").Append(CustomPolicyID).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -616,6 +626,11 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
                     this.ProvideAnalysisRationale == input.ProvideAnalysisRationale ||
                     (this.ProvideAnalysisRationale != null &&
                     this.ProvideAnalysisRationale.Equals(input.ProvideAnalysisRationale))
+                ) && 
+                (
+                    this.CustomPolicyID == input.CustomPolicyID ||
+                    (this.CustomPolicyID != null &&
+                    this.CustomPolicyID.Equals(input.CustomPolicyID))
                 );
         }
 
@@ -700,6 +715,8 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
                     hashCode = hashCode * 59 + this.AllowBiometrics.GetHashCode();
                 if (this.ProvideAnalysisRationale != null)
                     hashCode = hashCode * 59 + this.ProvideAnalysisRationale.GetHashCode();
+                if (this.CustomPolicyID != null)
+                    hashCode = hashCode * 59 + this.CustomPolicyID.GetHashCode();
                 return hashCode;
             }
         }

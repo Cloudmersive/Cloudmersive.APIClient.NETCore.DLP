@@ -5,7 +5,7 @@ Easily and directly scan and detect sensitive data (PII) in input text.
 This C# SDK is for the [Cloudmersive DLP API](https://www.cloudmersive.com/dlp-data-loss-prevention-api):
 
 - API version: v1
-- SDK version: 1.1.0
+- SDK version: 1.1.1
 - Build package: io.swagger.codegen.languages.CSharpClientCodegen
 
 <a name="frameworks-supported"></a>

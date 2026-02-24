@@ -28,7 +28,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document
         /// </summary>
         /// <remarks>
-        /// Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -39,7 +39,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document
         /// </summary>
         /// <remarks>
-        /// Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -49,7 +49,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document (Advanced)
         /// </summary>
         /// <remarks>
-        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -60,7 +60,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document (Advanced)
         /// </summary>
         /// <remarks>
-        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -114,7 +114,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document
         /// </summary>
         /// <remarks>
-        /// Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -125,7 +125,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document
         /// </summary>
         /// <remarks>
-        /// Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -135,7 +135,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document (Advanced)
         /// </summary>
         /// <remarks>
-        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -146,7 +146,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         /// Redact User Data in Document (Advanced)
         /// </summary>
         /// <remarks>
-        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -295,7 +295,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -307,7 +307,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -375,7 +375,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -388,7 +388,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document Detects and redacts configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a grid-overlay approach, blurs those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -456,7 +456,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -468,7 +468,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -536,7 +536,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
@@ -549,7 +549,7 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOCX, PNG, JPG) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
+        /// Redact User Data in Document (Advanced) Detects and redacts 35 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI. Rasterizes document pages, detects PII regions using a row-overlay approach, redacts those regions, and returns a rasterized PDF.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
