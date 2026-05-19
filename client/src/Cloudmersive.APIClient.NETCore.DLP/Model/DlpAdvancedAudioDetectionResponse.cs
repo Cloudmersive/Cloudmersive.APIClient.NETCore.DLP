@@ -23,58 +23,60 @@ using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.DLP.Client.SwaggerDa
 namespace Cloudmersive.APIClient.NETCore.DLP.Model
 {
     /// <summary>
-    /// Response object for advanced DLP text redaction with 34 PII detection results, redacted text, and optional rationale.
+    /// Response object for advanced DLP audio detection with 34 PII detection types, transcript, timestamps, and optional rationale.
     /// </summary>
     [DataContract]
-    public partial class DlpAdvancedRedactionResponse :  IEquatable<DlpAdvancedRedactionResponse>
+    public partial class DlpAdvancedAudioDetectionResponse :  IEquatable<DlpAdvancedAudioDetectionResponse>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DlpAdvancedRedactionResponse" /> class.
+        /// Initializes a new instance of the <see cref="DlpAdvancedAudioDetectionResponse" /> class.
         /// </summary>
-        /// <param name="redactedText">The redacted text with PII removed or replaced, or the original text if no disallowed PII was found..</param>
-        /// <param name="cleanResult">True if no disallowed PII or sensitive data types were detected; false if any disallowed type was found and redacted..</param>
-        /// <param name="containsEmailAddress">True if the input contains email addresses..</param>
-        /// <param name="containsPhoneNumber">True if the input contains phone numbers..</param>
-        /// <param name="containsStreetAddress">True if the input contains street addresses..</param>
-        /// <param name="containsCity">True if the input contains standalone city names (e.g. \&quot;San Francisco\&quot;) outside of a full street address..</param>
-        /// <param name="containsPersonName">True if the input contains person names..</param>
-        /// <param name="containsBirthDate">True if the input contains birth dates..</param>
-        /// <param name="containsPassportNumber">True if the input contains passport numbers..</param>
-        /// <param name="containsDriversLicense">True if the input contains drivers license numbers..</param>
-        /// <param name="containsSocialSecurityNumber">True if the input contains social security numbers..</param>
-        /// <param name="containsTaxpayerID">True if the input contains taxpayer IDs..</param>
-        /// <param name="containsCreditCardNumber">True if the input contains credit card numbers..</param>
-        /// <param name="containsCreditCardExpirationDate">True if the input contains credit card expiration dates..</param>
-        /// <param name="containsCreditCardVerificationCode">True if the input contains credit card verification codes..</param>
-        /// <param name="containsBankAccountNumber">True if the input contains bank account numbers..</param>
-        /// <param name="containsIBAN">True if the input contains IBANs..</param>
-        /// <param name="containsHealthInsuranceNumber">True if the input contains health insurance numbers..</param>
-        /// <param name="containsBearerToken">True if the input contains bearer tokens..</param>
-        /// <param name="containsHttpCookie">True if the input contains HTTP cookies..</param>
-        /// <param name="containsPrivateKeys">True if the input contains private keys..</param>
-        /// <param name="containsCredentials">True if the input contains credentials (usernames/passwords)..</param>
-        /// <param name="containsDeepWebUrls">True if the input contains deep web URLs (.onion)..</param>
-        /// <param name="containsSourceCode">True if the input contains source code..</param>
-        /// <param name="containsIpAddress">True if the input contains IP addresses..</param>
-        /// <param name="containsMacAddress">True if the input contains MAC addresses..</param>
-        /// <param name="containsHealthInsuranceMemberID">True if the input contains health insurance member IDs..</param>
-        /// <param name="containsMedicalRecordNumber">True if the input contains medical record numbers..</param>
-        /// <param name="containsBillingAccountNumber">True if the input contains billing account numbers (provider/customer billing account IDs, distinct from bank account numbers)..</param>
-        /// <param name="containsHealthInjuryOrDisease">True if the input contains references to injuries or diseases..</param>
-        /// <param name="containsHealthTypeOfTreatment">True if the input contains references to types of medical treatment..</param>
-        /// <param name="containsHealthDateAndTimeOfTreatment">True if the input contains dates and times of medical treatment..</param>
-        /// <param name="containsHealthPlanBeneficiaryNumber">True if the input contains health plan beneficiary numbers..</param>
-        /// <param name="containsHealthPaymentsMadeForTreatment">True if the input contains payments made for medical treatment..</param>
-        /// <param name="containsVehicleID">True if the input contains vehicle identifiers (e.g. license plates, VINs)..</param>
-        /// <param name="containsDeviceID">True if the input contains device identifiers (e.g. serial numbers, IMEIs, MAC-level device IDs)..</param>
-        /// <param name="containsNamesOfRelatives">True if the input contains names of relatives..</param>
-        /// <param name="containsHealthUniversalRecordLocator">True if the input contains health universal record locators (URLs)..</param>
-        /// <param name="containsBiometrics">True if the input contains biometric data references (e.g. fingerprints, retinal scans, voiceprints)..</param>
+        /// <param name="cleanResult">True if no disallowed PII or sensitive data types were detected; false if any disallowed type was found..</param>
+        /// <param name="transcript">Full transcript of the audio file..</param>
+        /// <param name="timestamps">Token-level timestamps from speech recognition..</param>
+        /// <param name="containsEmailAddress">True if the audio transcript contains email addresses..</param>
+        /// <param name="containsPhoneNumber">True if the audio transcript contains phone numbers..</param>
+        /// <param name="containsStreetAddress">True if the audio transcript contains street addresses..</param>
+        /// <param name="containsCity">True if the audio transcript contains standalone city names (e.g. \&quot;San Francisco\&quot;) outside of a full street address..</param>
+        /// <param name="containsPersonName">True if the audio transcript contains person names..</param>
+        /// <param name="containsBirthDate">True if the audio transcript contains birth dates..</param>
+        /// <param name="containsPassportNumber">True if the audio transcript contains passport numbers..</param>
+        /// <param name="containsDriversLicense">True if the audio transcript contains drivers license numbers..</param>
+        /// <param name="containsSocialSecurityNumber">True if the audio transcript contains social security numbers..</param>
+        /// <param name="containsTaxpayerID">True if the audio transcript contains taxpayer IDs..</param>
+        /// <param name="containsCreditCardNumber">True if the audio transcript contains credit card numbers..</param>
+        /// <param name="containsCreditCardExpirationDate">True if the audio transcript contains credit card expiration dates..</param>
+        /// <param name="containsCreditCardVerificationCode">True if the audio transcript contains credit card verification codes..</param>
+        /// <param name="containsBankAccountNumber">True if the audio transcript contains bank account numbers..</param>
+        /// <param name="containsIBAN">True if the audio transcript contains IBANs..</param>
+        /// <param name="containsHealthInsuranceNumber">True if the audio transcript contains health insurance numbers..</param>
+        /// <param name="containsBearerToken">True if the audio transcript contains bearer tokens..</param>
+        /// <param name="containsHttpCookie">True if the audio transcript contains HTTP cookies..</param>
+        /// <param name="containsPrivateKeys">True if the audio transcript contains private keys..</param>
+        /// <param name="containsCredentials">True if the audio transcript contains credentials (usernames/passwords)..</param>
+        /// <param name="containsDeepWebUrls">True if the audio transcript contains deep web URLs (.onion)..</param>
+        /// <param name="containsSourceCode">True if the audio transcript contains source code..</param>
+        /// <param name="containsIpAddress">True if the audio transcript contains IP addresses..</param>
+        /// <param name="containsMacAddress">True if the audio transcript contains MAC addresses..</param>
+        /// <param name="containsHealthInsuranceMemberID">True if the audio transcript contains health insurance member IDs..</param>
+        /// <param name="containsMedicalRecordNumber">True if the audio transcript contains medical record numbers..</param>
+        /// <param name="containsBillingAccountNumber">True if the audio transcript contains billing account numbers (provider/customer billing account IDs, distinct from bank account numbers)..</param>
+        /// <param name="containsHealthInjuryOrDisease">True if the audio transcript contains references to injuries or diseases..</param>
+        /// <param name="containsHealthTypeOfTreatment">True if the audio transcript contains references to types of medical treatment..</param>
+        /// <param name="containsHealthDateAndTimeOfTreatment">True if the audio transcript contains dates and times of medical treatment..</param>
+        /// <param name="containsHealthPlanBeneficiaryNumber">True if the audio transcript contains health plan beneficiary numbers..</param>
+        /// <param name="containsHealthPaymentsMadeForTreatment">True if the audio transcript contains payments made for medical treatment..</param>
+        /// <param name="containsVehicleID">True if the audio transcript contains vehicle identifiers (e.g. license plates, VINs)..</param>
+        /// <param name="containsDeviceID">True if the audio transcript contains device identifiers (e.g. serial numbers, IMEIs, MAC-level device IDs)..</param>
+        /// <param name="containsNamesOfRelatives">True if the audio transcript contains names of relatives..</param>
+        /// <param name="containsHealthUniversalRecordLocator">True if the audio transcript contains health universal record locators (URLs)..</param>
+        /// <param name="containsBiometrics">True if the audio transcript contains biometric data references (e.g. fingerprints, retinal scans, voiceprints)..</param>
         /// <param name="analysisRationale">Rationale for why the conclusion was formed. Only populated when ProvideAnalysisRationale is set to true in the request..</param>
-        public DlpAdvancedRedactionResponse(string redactedText = default(string), bool? cleanResult = default(bool?), bool? containsEmailAddress = default(bool?), bool? containsPhoneNumber = default(bool?), bool? containsStreetAddress = default(bool?), bool? containsCity = default(bool?), bool? containsPersonName = default(bool?), bool? containsBirthDate = default(bool?), bool? containsPassportNumber = default(bool?), bool? containsDriversLicense = default(bool?), bool? containsSocialSecurityNumber = default(bool?), bool? containsTaxpayerID = default(bool?), bool? containsCreditCardNumber = default(bool?), bool? containsCreditCardExpirationDate = default(bool?), bool? containsCreditCardVerificationCode = default(bool?), bool? containsBankAccountNumber = default(bool?), bool? containsIBAN = default(bool?), bool? containsHealthInsuranceNumber = default(bool?), bool? containsBearerToken = default(bool?), bool? containsHttpCookie = default(bool?), bool? containsPrivateKeys = default(bool?), bool? containsCredentials = default(bool?), bool? containsDeepWebUrls = default(bool?), bool? containsSourceCode = default(bool?), bool? containsIpAddress = default(bool?), bool? containsMacAddress = default(bool?), bool? containsHealthInsuranceMemberID = default(bool?), bool? containsMedicalRecordNumber = default(bool?), bool? containsBillingAccountNumber = default(bool?), bool? containsHealthInjuryOrDisease = default(bool?), bool? containsHealthTypeOfTreatment = default(bool?), bool? containsHealthDateAndTimeOfTreatment = default(bool?), bool? containsHealthPlanBeneficiaryNumber = default(bool?), bool? containsHealthPaymentsMadeForTreatment = default(bool?), bool? containsVehicleID = default(bool?), bool? containsDeviceID = default(bool?), bool? containsNamesOfRelatives = default(bool?), bool? containsHealthUniversalRecordLocator = default(bool?), bool? containsBiometrics = default(bool?), string analysisRationale = default(string))
+        public DlpAdvancedAudioDetectionResponse(bool? cleanResult = default(bool?), string transcript = default(string), List<AudioTimestamp> timestamps = default(List<AudioTimestamp>), bool? containsEmailAddress = default(bool?), bool? containsPhoneNumber = default(bool?), bool? containsStreetAddress = default(bool?), bool? containsCity = default(bool?), bool? containsPersonName = default(bool?), bool? containsBirthDate = default(bool?), bool? containsPassportNumber = default(bool?), bool? containsDriversLicense = default(bool?), bool? containsSocialSecurityNumber = default(bool?), bool? containsTaxpayerID = default(bool?), bool? containsCreditCardNumber = default(bool?), bool? containsCreditCardExpirationDate = default(bool?), bool? containsCreditCardVerificationCode = default(bool?), bool? containsBankAccountNumber = default(bool?), bool? containsIBAN = default(bool?), bool? containsHealthInsuranceNumber = default(bool?), bool? containsBearerToken = default(bool?), bool? containsHttpCookie = default(bool?), bool? containsPrivateKeys = default(bool?), bool? containsCredentials = default(bool?), bool? containsDeepWebUrls = default(bool?), bool? containsSourceCode = default(bool?), bool? containsIpAddress = default(bool?), bool? containsMacAddress = default(bool?), bool? containsHealthInsuranceMemberID = default(bool?), bool? containsMedicalRecordNumber = default(bool?), bool? containsBillingAccountNumber = default(bool?), bool? containsHealthInjuryOrDisease = default(bool?), bool? containsHealthTypeOfTreatment = default(bool?), bool? containsHealthDateAndTimeOfTreatment = default(bool?), bool? containsHealthPlanBeneficiaryNumber = default(bool?), bool? containsHealthPaymentsMadeForTreatment = default(bool?), bool? containsVehicleID = default(bool?), bool? containsDeviceID = default(bool?), bool? containsNamesOfRelatives = default(bool?), bool? containsHealthUniversalRecordLocator = default(bool?), bool? containsBiometrics = default(bool?), string analysisRationale = default(string))
         {
-            this.RedactedText = redactedText;
             this.CleanResult = cleanResult;
+            this.Transcript = transcript;
+            this.Timestamps = timestamps;
             this.ContainsEmailAddress = containsEmailAddress;
             this.ContainsPhoneNumber = containsPhoneNumber;
             this.ContainsStreetAddress = containsStreetAddress;
@@ -116,275 +118,282 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
         }
         
         /// <summary>
-        /// The redacted text with PII removed or replaced, or the original text if no disallowed PII was found.
+        /// True if no disallowed PII or sensitive data types were detected; false if any disallowed type was found.
         /// </summary>
-        /// <value>The redacted text with PII removed or replaced, or the original text if no disallowed PII was found.</value>
-        [DataMember(Name="RedactedText", EmitDefaultValue=false)]
-        public string RedactedText { get; set; }
-
-        /// <summary>
-        /// True if no disallowed PII or sensitive data types were detected; false if any disallowed type was found and redacted.
-        /// </summary>
-        /// <value>True if no disallowed PII or sensitive data types were detected; false if any disallowed type was found and redacted.</value>
+        /// <value>True if no disallowed PII or sensitive data types were detected; false if any disallowed type was found.</value>
         [DataMember(Name="CleanResult", EmitDefaultValue=false)]
         public bool? CleanResult { get; set; }
 
         /// <summary>
-        /// True if the input contains email addresses.
+        /// Full transcript of the audio file.
         /// </summary>
-        /// <value>True if the input contains email addresses.</value>
+        /// <value>Full transcript of the audio file.</value>
+        [DataMember(Name="Transcript", EmitDefaultValue=false)]
+        public string Transcript { get; set; }
+
+        /// <summary>
+        /// Token-level timestamps from speech recognition.
+        /// </summary>
+        /// <value>Token-level timestamps from speech recognition.</value>
+        [DataMember(Name="Timestamps", EmitDefaultValue=false)]
+        public List<AudioTimestamp> Timestamps { get; set; }
+
+        /// <summary>
+        /// True if the audio transcript contains email addresses.
+        /// </summary>
+        /// <value>True if the audio transcript contains email addresses.</value>
         [DataMember(Name="ContainsEmailAddress", EmitDefaultValue=false)]
         public bool? ContainsEmailAddress { get; set; }
 
         /// <summary>
-        /// True if the input contains phone numbers.
+        /// True if the audio transcript contains phone numbers.
         /// </summary>
-        /// <value>True if the input contains phone numbers.</value>
+        /// <value>True if the audio transcript contains phone numbers.</value>
         [DataMember(Name="ContainsPhoneNumber", EmitDefaultValue=false)]
         public bool? ContainsPhoneNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains street addresses.
+        /// True if the audio transcript contains street addresses.
         /// </summary>
-        /// <value>True if the input contains street addresses.</value>
+        /// <value>True if the audio transcript contains street addresses.</value>
         [DataMember(Name="ContainsStreetAddress", EmitDefaultValue=false)]
         public bool? ContainsStreetAddress { get; set; }
 
         /// <summary>
-        /// True if the input contains standalone city names (e.g. \&quot;San Francisco\&quot;) outside of a full street address.
+        /// True if the audio transcript contains standalone city names (e.g. \&quot;San Francisco\&quot;) outside of a full street address.
         /// </summary>
-        /// <value>True if the input contains standalone city names (e.g. \&quot;San Francisco\&quot;) outside of a full street address.</value>
+        /// <value>True if the audio transcript contains standalone city names (e.g. \&quot;San Francisco\&quot;) outside of a full street address.</value>
         [DataMember(Name="ContainsCity", EmitDefaultValue=false)]
         public bool? ContainsCity { get; set; }
 
         /// <summary>
-        /// True if the input contains person names.
+        /// True if the audio transcript contains person names.
         /// </summary>
-        /// <value>True if the input contains person names.</value>
+        /// <value>True if the audio transcript contains person names.</value>
         [DataMember(Name="ContainsPersonName", EmitDefaultValue=false)]
         public bool? ContainsPersonName { get; set; }
 
         /// <summary>
-        /// True if the input contains birth dates.
+        /// True if the audio transcript contains birth dates.
         /// </summary>
-        /// <value>True if the input contains birth dates.</value>
+        /// <value>True if the audio transcript contains birth dates.</value>
         [DataMember(Name="ContainsBirthDate", EmitDefaultValue=false)]
         public bool? ContainsBirthDate { get; set; }
 
         /// <summary>
-        /// True if the input contains passport numbers.
+        /// True if the audio transcript contains passport numbers.
         /// </summary>
-        /// <value>True if the input contains passport numbers.</value>
+        /// <value>True if the audio transcript contains passport numbers.</value>
         [DataMember(Name="ContainsPassportNumber", EmitDefaultValue=false)]
         public bool? ContainsPassportNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains drivers license numbers.
+        /// True if the audio transcript contains drivers license numbers.
         /// </summary>
-        /// <value>True if the input contains drivers license numbers.</value>
+        /// <value>True if the audio transcript contains drivers license numbers.</value>
         [DataMember(Name="ContainsDriversLicense", EmitDefaultValue=false)]
         public bool? ContainsDriversLicense { get; set; }
 
         /// <summary>
-        /// True if the input contains social security numbers.
+        /// True if the audio transcript contains social security numbers.
         /// </summary>
-        /// <value>True if the input contains social security numbers.</value>
+        /// <value>True if the audio transcript contains social security numbers.</value>
         [DataMember(Name="ContainsSocialSecurityNumber", EmitDefaultValue=false)]
         public bool? ContainsSocialSecurityNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains taxpayer IDs.
+        /// True if the audio transcript contains taxpayer IDs.
         /// </summary>
-        /// <value>True if the input contains taxpayer IDs.</value>
+        /// <value>True if the audio transcript contains taxpayer IDs.</value>
         [DataMember(Name="ContainsTaxpayerID", EmitDefaultValue=false)]
         public bool? ContainsTaxpayerID { get; set; }
 
         /// <summary>
-        /// True if the input contains credit card numbers.
+        /// True if the audio transcript contains credit card numbers.
         /// </summary>
-        /// <value>True if the input contains credit card numbers.</value>
+        /// <value>True if the audio transcript contains credit card numbers.</value>
         [DataMember(Name="ContainsCreditCardNumber", EmitDefaultValue=false)]
         public bool? ContainsCreditCardNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains credit card expiration dates.
+        /// True if the audio transcript contains credit card expiration dates.
         /// </summary>
-        /// <value>True if the input contains credit card expiration dates.</value>
+        /// <value>True if the audio transcript contains credit card expiration dates.</value>
         [DataMember(Name="ContainsCreditCardExpirationDate", EmitDefaultValue=false)]
         public bool? ContainsCreditCardExpirationDate { get; set; }
 
         /// <summary>
-        /// True if the input contains credit card verification codes.
+        /// True if the audio transcript contains credit card verification codes.
         /// </summary>
-        /// <value>True if the input contains credit card verification codes.</value>
+        /// <value>True if the audio transcript contains credit card verification codes.</value>
         [DataMember(Name="ContainsCreditCardVerificationCode", EmitDefaultValue=false)]
         public bool? ContainsCreditCardVerificationCode { get; set; }
 
         /// <summary>
-        /// True if the input contains bank account numbers.
+        /// True if the audio transcript contains bank account numbers.
         /// </summary>
-        /// <value>True if the input contains bank account numbers.</value>
+        /// <value>True if the audio transcript contains bank account numbers.</value>
         [DataMember(Name="ContainsBankAccountNumber", EmitDefaultValue=false)]
         public bool? ContainsBankAccountNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains IBANs.
+        /// True if the audio transcript contains IBANs.
         /// </summary>
-        /// <value>True if the input contains IBANs.</value>
+        /// <value>True if the audio transcript contains IBANs.</value>
         [DataMember(Name="ContainsIBAN", EmitDefaultValue=false)]
         public bool? ContainsIBAN { get; set; }
 
         /// <summary>
-        /// True if the input contains health insurance numbers.
+        /// True if the audio transcript contains health insurance numbers.
         /// </summary>
-        /// <value>True if the input contains health insurance numbers.</value>
+        /// <value>True if the audio transcript contains health insurance numbers.</value>
         [DataMember(Name="ContainsHealthInsuranceNumber", EmitDefaultValue=false)]
         public bool? ContainsHealthInsuranceNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains bearer tokens.
+        /// True if the audio transcript contains bearer tokens.
         /// </summary>
-        /// <value>True if the input contains bearer tokens.</value>
+        /// <value>True if the audio transcript contains bearer tokens.</value>
         [DataMember(Name="ContainsBearerToken", EmitDefaultValue=false)]
         public bool? ContainsBearerToken { get; set; }
 
         /// <summary>
-        /// True if the input contains HTTP cookies.
+        /// True if the audio transcript contains HTTP cookies.
         /// </summary>
-        /// <value>True if the input contains HTTP cookies.</value>
+        /// <value>True if the audio transcript contains HTTP cookies.</value>
         [DataMember(Name="ContainsHttpCookie", EmitDefaultValue=false)]
         public bool? ContainsHttpCookie { get; set; }
 
         /// <summary>
-        /// True if the input contains private keys.
+        /// True if the audio transcript contains private keys.
         /// </summary>
-        /// <value>True if the input contains private keys.</value>
+        /// <value>True if the audio transcript contains private keys.</value>
         [DataMember(Name="ContainsPrivateKeys", EmitDefaultValue=false)]
         public bool? ContainsPrivateKeys { get; set; }
 
         /// <summary>
-        /// True if the input contains credentials (usernames/passwords).
+        /// True if the audio transcript contains credentials (usernames/passwords).
         /// </summary>
-        /// <value>True if the input contains credentials (usernames/passwords).</value>
+        /// <value>True if the audio transcript contains credentials (usernames/passwords).</value>
         [DataMember(Name="ContainsCredentials", EmitDefaultValue=false)]
         public bool? ContainsCredentials { get; set; }
 
         /// <summary>
-        /// True if the input contains deep web URLs (.onion).
+        /// True if the audio transcript contains deep web URLs (.onion).
         /// </summary>
-        /// <value>True if the input contains deep web URLs (.onion).</value>
+        /// <value>True if the audio transcript contains deep web URLs (.onion).</value>
         [DataMember(Name="ContainsDeepWebUrls", EmitDefaultValue=false)]
         public bool? ContainsDeepWebUrls { get; set; }
 
         /// <summary>
-        /// True if the input contains source code.
+        /// True if the audio transcript contains source code.
         /// </summary>
-        /// <value>True if the input contains source code.</value>
+        /// <value>True if the audio transcript contains source code.</value>
         [DataMember(Name="ContainsSourceCode", EmitDefaultValue=false)]
         public bool? ContainsSourceCode { get; set; }
 
         /// <summary>
-        /// True if the input contains IP addresses.
+        /// True if the audio transcript contains IP addresses.
         /// </summary>
-        /// <value>True if the input contains IP addresses.</value>
+        /// <value>True if the audio transcript contains IP addresses.</value>
         [DataMember(Name="ContainsIpAddress", EmitDefaultValue=false)]
         public bool? ContainsIpAddress { get; set; }
 
         /// <summary>
-        /// True if the input contains MAC addresses.
+        /// True if the audio transcript contains MAC addresses.
         /// </summary>
-        /// <value>True if the input contains MAC addresses.</value>
+        /// <value>True if the audio transcript contains MAC addresses.</value>
         [DataMember(Name="ContainsMacAddress", EmitDefaultValue=false)]
         public bool? ContainsMacAddress { get; set; }
 
         /// <summary>
-        /// True if the input contains health insurance member IDs.
+        /// True if the audio transcript contains health insurance member IDs.
         /// </summary>
-        /// <value>True if the input contains health insurance member IDs.</value>
+        /// <value>True if the audio transcript contains health insurance member IDs.</value>
         [DataMember(Name="ContainsHealthInsuranceMemberID", EmitDefaultValue=false)]
         public bool? ContainsHealthInsuranceMemberID { get; set; }
 
         /// <summary>
-        /// True if the input contains medical record numbers.
+        /// True if the audio transcript contains medical record numbers.
         /// </summary>
-        /// <value>True if the input contains medical record numbers.</value>
+        /// <value>True if the audio transcript contains medical record numbers.</value>
         [DataMember(Name="ContainsMedicalRecordNumber", EmitDefaultValue=false)]
         public bool? ContainsMedicalRecordNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains billing account numbers (provider/customer billing account IDs, distinct from bank account numbers).
+        /// True if the audio transcript contains billing account numbers (provider/customer billing account IDs, distinct from bank account numbers).
         /// </summary>
-        /// <value>True if the input contains billing account numbers (provider/customer billing account IDs, distinct from bank account numbers).</value>
+        /// <value>True if the audio transcript contains billing account numbers (provider/customer billing account IDs, distinct from bank account numbers).</value>
         [DataMember(Name="ContainsBillingAccountNumber", EmitDefaultValue=false)]
         public bool? ContainsBillingAccountNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains references to injuries or diseases.
+        /// True if the audio transcript contains references to injuries or diseases.
         /// </summary>
-        /// <value>True if the input contains references to injuries or diseases.</value>
+        /// <value>True if the audio transcript contains references to injuries or diseases.</value>
         [DataMember(Name="ContainsHealthInjuryOrDisease", EmitDefaultValue=false)]
         public bool? ContainsHealthInjuryOrDisease { get; set; }
 
         /// <summary>
-        /// True if the input contains references to types of medical treatment.
+        /// True if the audio transcript contains references to types of medical treatment.
         /// </summary>
-        /// <value>True if the input contains references to types of medical treatment.</value>
+        /// <value>True if the audio transcript contains references to types of medical treatment.</value>
         [DataMember(Name="ContainsHealthTypeOfTreatment", EmitDefaultValue=false)]
         public bool? ContainsHealthTypeOfTreatment { get; set; }
 
         /// <summary>
-        /// True if the input contains dates and times of medical treatment.
+        /// True if the audio transcript contains dates and times of medical treatment.
         /// </summary>
-        /// <value>True if the input contains dates and times of medical treatment.</value>
+        /// <value>True if the audio transcript contains dates and times of medical treatment.</value>
         [DataMember(Name="ContainsHealthDateAndTimeOfTreatment", EmitDefaultValue=false)]
         public bool? ContainsHealthDateAndTimeOfTreatment { get; set; }
 
         /// <summary>
-        /// True if the input contains health plan beneficiary numbers.
+        /// True if the audio transcript contains health plan beneficiary numbers.
         /// </summary>
-        /// <value>True if the input contains health plan beneficiary numbers.</value>
+        /// <value>True if the audio transcript contains health plan beneficiary numbers.</value>
         [DataMember(Name="ContainsHealthPlanBeneficiaryNumber", EmitDefaultValue=false)]
         public bool? ContainsHealthPlanBeneficiaryNumber { get; set; }
 
         /// <summary>
-        /// True if the input contains payments made for medical treatment.
+        /// True if the audio transcript contains payments made for medical treatment.
         /// </summary>
-        /// <value>True if the input contains payments made for medical treatment.</value>
+        /// <value>True if the audio transcript contains payments made for medical treatment.</value>
         [DataMember(Name="ContainsHealthPaymentsMadeForTreatment", EmitDefaultValue=false)]
         public bool? ContainsHealthPaymentsMadeForTreatment { get; set; }
 
         /// <summary>
-        /// True if the input contains vehicle identifiers (e.g. license plates, VINs).
+        /// True if the audio transcript contains vehicle identifiers (e.g. license plates, VINs).
         /// </summary>
-        /// <value>True if the input contains vehicle identifiers (e.g. license plates, VINs).</value>
+        /// <value>True if the audio transcript contains vehicle identifiers (e.g. license plates, VINs).</value>
         [DataMember(Name="ContainsVehicleID", EmitDefaultValue=false)]
         public bool? ContainsVehicleID { get; set; }
 
         /// <summary>
-        /// True if the input contains device identifiers (e.g. serial numbers, IMEIs, MAC-level device IDs).
+        /// True if the audio transcript contains device identifiers (e.g. serial numbers, IMEIs, MAC-level device IDs).
         /// </summary>
-        /// <value>True if the input contains device identifiers (e.g. serial numbers, IMEIs, MAC-level device IDs).</value>
+        /// <value>True if the audio transcript contains device identifiers (e.g. serial numbers, IMEIs, MAC-level device IDs).</value>
         [DataMember(Name="ContainsDeviceID", EmitDefaultValue=false)]
         public bool? ContainsDeviceID { get; set; }
 
         /// <summary>
-        /// True if the input contains names of relatives.
+        /// True if the audio transcript contains names of relatives.
         /// </summary>
-        /// <value>True if the input contains names of relatives.</value>
+        /// <value>True if the audio transcript contains names of relatives.</value>
         [DataMember(Name="ContainsNamesOfRelatives", EmitDefaultValue=false)]
         public bool? ContainsNamesOfRelatives { get; set; }
 
         /// <summary>
-        /// True if the input contains health universal record locators (URLs).
+        /// True if the audio transcript contains health universal record locators (URLs).
         /// </summary>
-        /// <value>True if the input contains health universal record locators (URLs).</value>
+        /// <value>True if the audio transcript contains health universal record locators (URLs).</value>
         [DataMember(Name="ContainsHealthUniversalRecordLocator", EmitDefaultValue=false)]
         public bool? ContainsHealthUniversalRecordLocator { get; set; }
 
         /// <summary>
-        /// True if the input contains biometric data references (e.g. fingerprints, retinal scans, voiceprints).
+        /// True if the audio transcript contains biometric data references (e.g. fingerprints, retinal scans, voiceprints).
         /// </summary>
-        /// <value>True if the input contains biometric data references (e.g. fingerprints, retinal scans, voiceprints).</value>
+        /// <value>True if the audio transcript contains biometric data references (e.g. fingerprints, retinal scans, voiceprints).</value>
         [DataMember(Name="ContainsBiometrics", EmitDefaultValue=false)]
         public bool? ContainsBiometrics { get; set; }
 
@@ -402,9 +411,10 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class DlpAdvancedRedactionResponse {\n");
-            sb.Append("  RedactedText: ").Append(RedactedText).Append("\n");
+            sb.Append("class DlpAdvancedAudioDetectionResponse {\n");
             sb.Append("  CleanResult: ").Append(CleanResult).Append("\n");
+            sb.Append("  Transcript: ").Append(Transcript).Append("\n");
+            sb.Append("  Timestamps: ").Append(Timestamps).Append("\n");
             sb.Append("  ContainsEmailAddress: ").Append(ContainsEmailAddress).Append("\n");
             sb.Append("  ContainsPhoneNumber: ").Append(ContainsPhoneNumber).Append("\n");
             sb.Append("  ContainsStreetAddress: ").Append(ContainsStreetAddress).Append("\n");
@@ -463,29 +473,34 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DlpAdvancedRedactionResponse);
+            return this.Equals(input as DlpAdvancedAudioDetectionResponse);
         }
 
         /// <summary>
-        /// Returns true if DlpAdvancedRedactionResponse instances are equal
+        /// Returns true if DlpAdvancedAudioDetectionResponse instances are equal
         /// </summary>
-        /// <param name="input">Instance of DlpAdvancedRedactionResponse to be compared</param>
+        /// <param name="input">Instance of DlpAdvancedAudioDetectionResponse to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DlpAdvancedRedactionResponse input)
+        public bool Equals(DlpAdvancedAudioDetectionResponse input)
         {
             if (input == null)
                 return false;
 
             return 
                 (
-                    this.RedactedText == input.RedactedText ||
-                    (this.RedactedText != null &&
-                    this.RedactedText.Equals(input.RedactedText))
-                ) && 
-                (
                     this.CleanResult == input.CleanResult ||
                     (this.CleanResult != null &&
                     this.CleanResult.Equals(input.CleanResult))
+                ) && 
+                (
+                    this.Transcript == input.Transcript ||
+                    (this.Transcript != null &&
+                    this.Transcript.Equals(input.Transcript))
+                ) && 
+                (
+                    this.Timestamps == input.Timestamps ||
+                    this.Timestamps != null &&
+                    this.Timestamps.SequenceEqual(input.Timestamps)
                 ) && 
                 (
                     this.ContainsEmailAddress == input.ContainsEmailAddress ||
@@ -688,10 +703,12 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.RedactedText != null)
-                    hashCode = hashCode * 59 + this.RedactedText.GetHashCode();
                 if (this.CleanResult != null)
                     hashCode = hashCode * 59 + this.CleanResult.GetHashCode();
+                if (this.Transcript != null)
+                    hashCode = hashCode * 59 + this.Transcript.GetHashCode();
+                if (this.Timestamps != null)
+                    hashCode = hashCode * 59 + this.Timestamps.GetHashCode();
                 if (this.ContainsEmailAddress != null)
                     hashCode = hashCode * 59 + this.ContainsEmailAddress.GetHashCode();
                 if (this.ContainsPhoneNumber != null)

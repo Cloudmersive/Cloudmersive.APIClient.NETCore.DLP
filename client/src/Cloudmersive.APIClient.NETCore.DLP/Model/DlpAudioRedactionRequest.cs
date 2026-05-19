@@ -23,45 +23,46 @@ using SwaggerDateConverter = Cloudmersive.APIClient.NETCore.DLP.Client.SwaggerDa
 namespace Cloudmersive.APIClient.NETCore.DLP.Model
 {
     /// <summary>
-    /// Request object for DLP document detection with 23 PII detection types.
+    /// Request object for DLP audio redaction with 23 PII detection types.
     /// </summary>
     [DataContract]
-    public partial class DlpDocumentDetectionRequest :  IEquatable<DlpDocumentDetectionRequest>
+    public partial class DlpAudioRedactionRequest :  IEquatable<DlpAudioRedactionRequest>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DlpDocumentDetectionRequest" /> class.
+        /// Initializes a new instance of the <see cref="DlpAudioRedactionRequest" /> class.
         /// </summary>
-        /// <param name="inputFile">Document file bytes (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, or WEBP) to scan for PII and sensitive data..</param>
-        /// <param name="fileName">Optional. Name of the input file including extension, used for format detection. If not provided, format is detected from file contents..</param>
-        /// <param name="recognitionMode">Optional. Recognition mode for image processing. Options: null (default), \&quot;Normal\&quot;, \&quot;Advanced\&quot;, \&quot;Fast\&quot;, \&quot;FastPlus\&quot;, \&quot;FastMini\&quot;..</param>
-        /// <param name="allowEmailAddress">Set to true to allow email addresses in the document and not flag them as PII..</param>
-        /// <param name="allowPhoneNumber">Set to true to allow phone numbers in the document and not flag them as PII..</param>
-        /// <param name="allowStreetAddress">Set to true to allow street addresses in the document and not flag them as PII..</param>
-        /// <param name="allowPersonName">Set to true to allow person names in the document and not flag them as PII..</param>
-        /// <param name="allowBirthDate">Set to true to allow birth dates in the document and not flag them as PII..</param>
-        /// <param name="allowPassportNumber">Set to true to allow passport numbers in the document and not flag them as PII..</param>
-        /// <param name="allowDriversLicense">Set to true to allow drivers license numbers in the document and not flag them as PII..</param>
-        /// <param name="allowSocialSecurityNumber">Set to true to allow social security numbers in the document and not flag them as PII..</param>
-        /// <param name="allowTaxpayerID">Set to true to allow taxpayer IDs in the document and not flag them as PII..</param>
-        /// <param name="allowCreditCardNumber">Set to true to allow credit card numbers in the document and not flag them as PII..</param>
-        /// <param name="allowCreditCardExpirationDate">Set to true to allow credit card expiration dates in the document and not flag them as PII..</param>
-        /// <param name="allowCreditCardVerificationCode">Set to true to allow credit card verification codes in the document and not flag them as PII..</param>
-        /// <param name="allowBankAccountNumber">Set to true to allow bank account numbers in the document and not flag them as PII..</param>
-        /// <param name="allowIBAN">Set to true to allow IBANs in the document and not flag them as PII..</param>
-        /// <param name="allowHealthInsuranceNumber">Set to true to allow health insurance numbers in the document and not flag them as PII..</param>
-        /// <param name="allowBearerToken">Set to true to allow bearer tokens in the document and not flag them as PII..</param>
-        /// <param name="allowHttpCookie">Set to true to allow HTTP cookies in the document and not flag them as PII..</param>
-        /// <param name="allowPrivateKeys">Set to true to allow private keys in the document and not flag them as PII..</param>
-        /// <param name="allowCredentials">Set to true to allow credentials (usernames/passwords) in the document and not flag them as PII..</param>
-        /// <param name="allowDeepWebUrls">Set to true to allow deep web URLs (.onion) in the document and not flag them as PII..</param>
-        /// <param name="allowSourceCode">Set to true to allow source code in the document and not flag it as sensitive data..</param>
-        /// <param name="allowIpAddress">Set to true to allow IP addresses in the document and not flag them as PII..</param>
-        /// <param name="allowMacAddress">Set to true to allow MAC addresses in the document and not flag them as PII..</param>
-        public DlpDocumentDetectionRequest(byte[] inputFile = default(byte[]), string fileName = default(string), string recognitionMode = default(string), bool? allowEmailAddress = default(bool?), bool? allowPhoneNumber = default(bool?), bool? allowStreetAddress = default(bool?), bool? allowPersonName = default(bool?), bool? allowBirthDate = default(bool?), bool? allowPassportNumber = default(bool?), bool? allowDriversLicense = default(bool?), bool? allowSocialSecurityNumber = default(bool?), bool? allowTaxpayerID = default(bool?), bool? allowCreditCardNumber = default(bool?), bool? allowCreditCardExpirationDate = default(bool?), bool? allowCreditCardVerificationCode = default(bool?), bool? allowBankAccountNumber = default(bool?), bool? allowIBAN = default(bool?), bool? allowHealthInsuranceNumber = default(bool?), bool? allowBearerToken = default(bool?), bool? allowHttpCookie = default(bool?), bool? allowPrivateKeys = default(bool?), bool? allowCredentials = default(bool?), bool? allowDeepWebUrls = default(bool?), bool? allowSourceCode = default(bool?), bool? allowIpAddress = default(bool?), bool? allowMacAddress = default(bool?))
+        /// <param name="inputFile">Audio file bytes (WAV, MP3, M4A, FLAC, OGG, or WMA) to transcribe, scan for PII, and redact..</param>
+        /// <param name="languageCode">Language code for speech recognition. Default is \&quot;ENG\&quot; (English)..</param>
+        /// <param name="allowEmailAddress">Set to true to allow email addresses in the audio transcript and not redact them..</param>
+        /// <param name="allowPhoneNumber">Set to true to allow phone numbers in the audio transcript and not redact them..</param>
+        /// <param name="allowStreetAddress">Set to true to allow street addresses in the audio transcript and not redact them..</param>
+        /// <param name="allowPersonName">Set to true to allow person names in the audio transcript and not redact them..</param>
+        /// <param name="allowBirthDate">Set to true to allow birth dates in the audio transcript and not redact them..</param>
+        /// <param name="allowPassportNumber">Set to true to allow passport numbers in the audio transcript and not redact them..</param>
+        /// <param name="allowDriversLicense">Set to true to allow drivers license numbers in the audio transcript and not redact them..</param>
+        /// <param name="allowSocialSecurityNumber">Set to true to allow social security numbers in the audio transcript and not redact them..</param>
+        /// <param name="allowTaxpayerID">Set to true to allow taxpayer IDs in the audio transcript and not redact them..</param>
+        /// <param name="allowCreditCardNumber">Set to true to allow credit card numbers in the audio transcript and not redact them..</param>
+        /// <param name="allowCreditCardExpirationDate">Set to true to allow credit card expiration dates in the audio transcript and not redact them..</param>
+        /// <param name="allowCreditCardVerificationCode">Set to true to allow credit card verification codes in the audio transcript and not redact them..</param>
+        /// <param name="allowBankAccountNumber">Set to true to allow bank account numbers in the audio transcript and not redact them..</param>
+        /// <param name="allowIBAN">Set to true to allow IBANs in the audio transcript and not redact them..</param>
+        /// <param name="allowHealthInsuranceNumber">Set to true to allow health insurance numbers in the audio transcript and not redact them..</param>
+        /// <param name="allowBearerToken">Set to true to allow bearer tokens in the audio transcript and not redact them..</param>
+        /// <param name="allowHttpCookie">Set to true to allow HTTP cookies in the audio transcript and not redact them..</param>
+        /// <param name="allowPrivateKeys">Set to true to allow private keys in the audio transcript and not redact them..</param>
+        /// <param name="allowCredentials">Set to true to allow credentials (usernames/passwords) in the audio transcript and not redact them..</param>
+        /// <param name="allowDeepWebUrls">Set to true to allow deep web URLs (.onion) in the audio transcript and not redact them..</param>
+        /// <param name="allowSourceCode">Set to true to allow source code in the audio transcript and not redact it..</param>
+        /// <param name="allowIpAddress">Set to true to allow IP addresses in the audio transcript and not redact them..</param>
+        /// <param name="allowMacAddress">Set to true to allow MAC addresses in the audio transcript and not redact them..</param>
+        /// <param name="redactionMode">Redaction mode for audio: \&quot;Bleep\&quot; (default) replaces redacted audio segments with a bleep tone, or \&quot;Mute\&quot; zeroes out the audio for the redacted portions..</param>
+        /// <param name="transcriptRedactionMode">Redaction mode for the transcript text: \&quot;SemanticTag\&quot; (default) replaces PII with a semantic tag in square brackets (e.g. [PHONE-NUMBER]), \&quot;Delete\&quot; removes PII entirely, or \&quot;ReplaceWithAsterisk\&quot; replaces PII characters with asterisks (*)..</param>
+        /// <param name="speechRecognitionMode">Optional. Speech recognition mode used when transcribing the audio for redaction. Available values: \&quot;Fast\&quot;, \&quot;Normal\&quot;, or \&quot;Advanced\&quot;. Defaults to \&quot;Normal\&quot; when not specified..</param>
+        public DlpAudioRedactionRequest(byte[] inputFile = default(byte[]), string languageCode = default(string), bool? allowEmailAddress = default(bool?), bool? allowPhoneNumber = default(bool?), bool? allowStreetAddress = default(bool?), bool? allowPersonName = default(bool?), bool? allowBirthDate = default(bool?), bool? allowPassportNumber = default(bool?), bool? allowDriversLicense = default(bool?), bool? allowSocialSecurityNumber = default(bool?), bool? allowTaxpayerID = default(bool?), bool? allowCreditCardNumber = default(bool?), bool? allowCreditCardExpirationDate = default(bool?), bool? allowCreditCardVerificationCode = default(bool?), bool? allowBankAccountNumber = default(bool?), bool? allowIBAN = default(bool?), bool? allowHealthInsuranceNumber = default(bool?), bool? allowBearerToken = default(bool?), bool? allowHttpCookie = default(bool?), bool? allowPrivateKeys = default(bool?), bool? allowCredentials = default(bool?), bool? allowDeepWebUrls = default(bool?), bool? allowSourceCode = default(bool?), bool? allowIpAddress = default(bool?), bool? allowMacAddress = default(bool?), string redactionMode = default(string), string transcriptRedactionMode = default(string), string speechRecognitionMode = default(string))
         {
             this.InputFile = inputFile;
-            this.FileName = fileName;
-            this.RecognitionMode = recognitionMode;
+            this.LanguageCode = languageCode;
             this.AllowEmailAddress = allowEmailAddress;
             this.AllowPhoneNumber = allowPhoneNumber;
             this.AllowStreetAddress = allowStreetAddress;
@@ -85,189 +86,206 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
             this.AllowSourceCode = allowSourceCode;
             this.AllowIpAddress = allowIpAddress;
             this.AllowMacAddress = allowMacAddress;
+            this.RedactionMode = redactionMode;
+            this.TranscriptRedactionMode = transcriptRedactionMode;
+            this.SpeechRecognitionMode = speechRecognitionMode;
         }
         
         /// <summary>
-        /// Document file bytes (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, or WEBP) to scan for PII and sensitive data.
+        /// Audio file bytes (WAV, MP3, M4A, FLAC, OGG, or WMA) to transcribe, scan for PII, and redact.
         /// </summary>
-        /// <value>Document file bytes (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, or WEBP) to scan for PII and sensitive data.</value>
+        /// <value>Audio file bytes (WAV, MP3, M4A, FLAC, OGG, or WMA) to transcribe, scan for PII, and redact.</value>
         [DataMember(Name="InputFile", EmitDefaultValue=false)]
         public byte[] InputFile { get; set; }
 
         /// <summary>
-        /// Optional. Name of the input file including extension, used for format detection. If not provided, format is detected from file contents.
+        /// Language code for speech recognition. Default is \&quot;ENG\&quot; (English).
         /// </summary>
-        /// <value>Optional. Name of the input file including extension, used for format detection. If not provided, format is detected from file contents.</value>
-        [DataMember(Name="FileName", EmitDefaultValue=false)]
-        public string FileName { get; set; }
+        /// <value>Language code for speech recognition. Default is \&quot;ENG\&quot; (English).</value>
+        [DataMember(Name="LanguageCode", EmitDefaultValue=false)]
+        public string LanguageCode { get; set; }
 
         /// <summary>
-        /// Optional. Recognition mode for image processing. Options: null (default), \&quot;Normal\&quot;, \&quot;Advanced\&quot;, \&quot;Fast\&quot;, \&quot;FastPlus\&quot;, \&quot;FastMini\&quot;.
+        /// Set to true to allow email addresses in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Optional. Recognition mode for image processing. Options: null (default), \&quot;Normal\&quot;, \&quot;Advanced\&quot;, \&quot;Fast\&quot;, \&quot;FastPlus\&quot;, \&quot;FastMini\&quot;.</value>
-        [DataMember(Name="RecognitionMode", EmitDefaultValue=false)]
-        public string RecognitionMode { get; set; }
-
-        /// <summary>
-        /// Set to true to allow email addresses in the document and not flag them as PII.
-        /// </summary>
-        /// <value>Set to true to allow email addresses in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow email addresses in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowEmailAddress", EmitDefaultValue=false)]
         public bool? AllowEmailAddress { get; set; }
 
         /// <summary>
-        /// Set to true to allow phone numbers in the document and not flag them as PII.
+        /// Set to true to allow phone numbers in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow phone numbers in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow phone numbers in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowPhoneNumber", EmitDefaultValue=false)]
         public bool? AllowPhoneNumber { get; set; }
 
         /// <summary>
-        /// Set to true to allow street addresses in the document and not flag them as PII.
+        /// Set to true to allow street addresses in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow street addresses in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow street addresses in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowStreetAddress", EmitDefaultValue=false)]
         public bool? AllowStreetAddress { get; set; }
 
         /// <summary>
-        /// Set to true to allow person names in the document and not flag them as PII.
+        /// Set to true to allow person names in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow person names in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow person names in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowPersonName", EmitDefaultValue=false)]
         public bool? AllowPersonName { get; set; }
 
         /// <summary>
-        /// Set to true to allow birth dates in the document and not flag them as PII.
+        /// Set to true to allow birth dates in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow birth dates in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow birth dates in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowBirthDate", EmitDefaultValue=false)]
         public bool? AllowBirthDate { get; set; }
 
         /// <summary>
-        /// Set to true to allow passport numbers in the document and not flag them as PII.
+        /// Set to true to allow passport numbers in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow passport numbers in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow passport numbers in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowPassportNumber", EmitDefaultValue=false)]
         public bool? AllowPassportNumber { get; set; }
 
         /// <summary>
-        /// Set to true to allow drivers license numbers in the document and not flag them as PII.
+        /// Set to true to allow drivers license numbers in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow drivers license numbers in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow drivers license numbers in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowDriversLicense", EmitDefaultValue=false)]
         public bool? AllowDriversLicense { get; set; }
 
         /// <summary>
-        /// Set to true to allow social security numbers in the document and not flag them as PII.
+        /// Set to true to allow social security numbers in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow social security numbers in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow social security numbers in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowSocialSecurityNumber", EmitDefaultValue=false)]
         public bool? AllowSocialSecurityNumber { get; set; }
 
         /// <summary>
-        /// Set to true to allow taxpayer IDs in the document and not flag them as PII.
+        /// Set to true to allow taxpayer IDs in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow taxpayer IDs in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow taxpayer IDs in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowTaxpayerID", EmitDefaultValue=false)]
         public bool? AllowTaxpayerID { get; set; }
 
         /// <summary>
-        /// Set to true to allow credit card numbers in the document and not flag them as PII.
+        /// Set to true to allow credit card numbers in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow credit card numbers in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow credit card numbers in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowCreditCardNumber", EmitDefaultValue=false)]
         public bool? AllowCreditCardNumber { get; set; }
 
         /// <summary>
-        /// Set to true to allow credit card expiration dates in the document and not flag them as PII.
+        /// Set to true to allow credit card expiration dates in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow credit card expiration dates in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow credit card expiration dates in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowCreditCardExpirationDate", EmitDefaultValue=false)]
         public bool? AllowCreditCardExpirationDate { get; set; }
 
         /// <summary>
-        /// Set to true to allow credit card verification codes in the document and not flag them as PII.
+        /// Set to true to allow credit card verification codes in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow credit card verification codes in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow credit card verification codes in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowCreditCardVerificationCode", EmitDefaultValue=false)]
         public bool? AllowCreditCardVerificationCode { get; set; }
 
         /// <summary>
-        /// Set to true to allow bank account numbers in the document and not flag them as PII.
+        /// Set to true to allow bank account numbers in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow bank account numbers in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow bank account numbers in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowBankAccountNumber", EmitDefaultValue=false)]
         public bool? AllowBankAccountNumber { get; set; }
 
         /// <summary>
-        /// Set to true to allow IBANs in the document and not flag them as PII.
+        /// Set to true to allow IBANs in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow IBANs in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow IBANs in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowIBAN", EmitDefaultValue=false)]
         public bool? AllowIBAN { get; set; }
 
         /// <summary>
-        /// Set to true to allow health insurance numbers in the document and not flag them as PII.
+        /// Set to true to allow health insurance numbers in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow health insurance numbers in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow health insurance numbers in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowHealthInsuranceNumber", EmitDefaultValue=false)]
         public bool? AllowHealthInsuranceNumber { get; set; }
 
         /// <summary>
-        /// Set to true to allow bearer tokens in the document and not flag them as PII.
+        /// Set to true to allow bearer tokens in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow bearer tokens in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow bearer tokens in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowBearerToken", EmitDefaultValue=false)]
         public bool? AllowBearerToken { get; set; }
 
         /// <summary>
-        /// Set to true to allow HTTP cookies in the document and not flag them as PII.
+        /// Set to true to allow HTTP cookies in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow HTTP cookies in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow HTTP cookies in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowHttpCookie", EmitDefaultValue=false)]
         public bool? AllowHttpCookie { get; set; }
 
         /// <summary>
-        /// Set to true to allow private keys in the document and not flag them as PII.
+        /// Set to true to allow private keys in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow private keys in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow private keys in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowPrivateKeys", EmitDefaultValue=false)]
         public bool? AllowPrivateKeys { get; set; }
 
         /// <summary>
-        /// Set to true to allow credentials (usernames/passwords) in the document and not flag them as PII.
+        /// Set to true to allow credentials (usernames/passwords) in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow credentials (usernames/passwords) in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow credentials (usernames/passwords) in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowCredentials", EmitDefaultValue=false)]
         public bool? AllowCredentials { get; set; }
 
         /// <summary>
-        /// Set to true to allow deep web URLs (.onion) in the document and not flag them as PII.
+        /// Set to true to allow deep web URLs (.onion) in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow deep web URLs (.onion) in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow deep web URLs (.onion) in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowDeepWebUrls", EmitDefaultValue=false)]
         public bool? AllowDeepWebUrls { get; set; }
 
         /// <summary>
-        /// Set to true to allow source code in the document and not flag it as sensitive data.
+        /// Set to true to allow source code in the audio transcript and not redact it.
         /// </summary>
-        /// <value>Set to true to allow source code in the document and not flag it as sensitive data.</value>
+        /// <value>Set to true to allow source code in the audio transcript and not redact it.</value>
         [DataMember(Name="AllowSourceCode", EmitDefaultValue=false)]
         public bool? AllowSourceCode { get; set; }
 
         /// <summary>
-        /// Set to true to allow IP addresses in the document and not flag them as PII.
+        /// Set to true to allow IP addresses in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow IP addresses in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow IP addresses in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowIpAddress", EmitDefaultValue=false)]
         public bool? AllowIpAddress { get; set; }
 
         /// <summary>
-        /// Set to true to allow MAC addresses in the document and not flag them as PII.
+        /// Set to true to allow MAC addresses in the audio transcript and not redact them.
         /// </summary>
-        /// <value>Set to true to allow MAC addresses in the document and not flag them as PII.</value>
+        /// <value>Set to true to allow MAC addresses in the audio transcript and not redact them.</value>
         [DataMember(Name="AllowMacAddress", EmitDefaultValue=false)]
         public bool? AllowMacAddress { get; set; }
+
+        /// <summary>
+        /// Redaction mode for audio: \&quot;Bleep\&quot; (default) replaces redacted audio segments with a bleep tone, or \&quot;Mute\&quot; zeroes out the audio for the redacted portions.
+        /// </summary>
+        /// <value>Redaction mode for audio: \&quot;Bleep\&quot; (default) replaces redacted audio segments with a bleep tone, or \&quot;Mute\&quot; zeroes out the audio for the redacted portions.</value>
+        [DataMember(Name="RedactionMode", EmitDefaultValue=false)]
+        public string RedactionMode { get; set; }
+
+        /// <summary>
+        /// Redaction mode for the transcript text: \&quot;SemanticTag\&quot; (default) replaces PII with a semantic tag in square brackets (e.g. [PHONE-NUMBER]), \&quot;Delete\&quot; removes PII entirely, or \&quot;ReplaceWithAsterisk\&quot; replaces PII characters with asterisks (*).
+        /// </summary>
+        /// <value>Redaction mode for the transcript text: \&quot;SemanticTag\&quot; (default) replaces PII with a semantic tag in square brackets (e.g. [PHONE-NUMBER]), \&quot;Delete\&quot; removes PII entirely, or \&quot;ReplaceWithAsterisk\&quot; replaces PII characters with asterisks (*).</value>
+        [DataMember(Name="TranscriptRedactionMode", EmitDefaultValue=false)]
+        public string TranscriptRedactionMode { get; set; }
+
+        /// <summary>
+        /// Optional. Speech recognition mode used when transcribing the audio for redaction. Available values: \&quot;Fast\&quot;, \&quot;Normal\&quot;, or \&quot;Advanced\&quot;. Defaults to \&quot;Normal\&quot; when not specified.
+        /// </summary>
+        /// <value>Optional. Speech recognition mode used when transcribing the audio for redaction. Available values: \&quot;Fast\&quot;, \&quot;Normal\&quot;, or \&quot;Advanced\&quot;. Defaults to \&quot;Normal\&quot; when not specified.</value>
+        [DataMember(Name="SpeechRecognitionMode", EmitDefaultValue=false)]
+        public string SpeechRecognitionMode { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -276,10 +294,9 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class DlpDocumentDetectionRequest {\n");
+            sb.Append("class DlpAudioRedactionRequest {\n");
             sb.Append("  InputFile: ").Append(InputFile).Append("\n");
-            sb.Append("  FileName: ").Append(FileName).Append("\n");
-            sb.Append("  RecognitionMode: ").Append(RecognitionMode).Append("\n");
+            sb.Append("  LanguageCode: ").Append(LanguageCode).Append("\n");
             sb.Append("  AllowEmailAddress: ").Append(AllowEmailAddress).Append("\n");
             sb.Append("  AllowPhoneNumber: ").Append(AllowPhoneNumber).Append("\n");
             sb.Append("  AllowStreetAddress: ").Append(AllowStreetAddress).Append("\n");
@@ -303,6 +320,9 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
             sb.Append("  AllowSourceCode: ").Append(AllowSourceCode).Append("\n");
             sb.Append("  AllowIpAddress: ").Append(AllowIpAddress).Append("\n");
             sb.Append("  AllowMacAddress: ").Append(AllowMacAddress).Append("\n");
+            sb.Append("  RedactionMode: ").Append(RedactionMode).Append("\n");
+            sb.Append("  TranscriptRedactionMode: ").Append(TranscriptRedactionMode).Append("\n");
+            sb.Append("  SpeechRecognitionMode: ").Append(SpeechRecognitionMode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -323,15 +343,15 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DlpDocumentDetectionRequest);
+            return this.Equals(input as DlpAudioRedactionRequest);
         }
 
         /// <summary>
-        /// Returns true if DlpDocumentDetectionRequest instances are equal
+        /// Returns true if DlpAudioRedactionRequest instances are equal
         /// </summary>
-        /// <param name="input">Instance of DlpDocumentDetectionRequest to be compared</param>
+        /// <param name="input">Instance of DlpAudioRedactionRequest to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(DlpDocumentDetectionRequest input)
+        public bool Equals(DlpAudioRedactionRequest input)
         {
             if (input == null)
                 return false;
@@ -343,14 +363,9 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
                     this.InputFile.Equals(input.InputFile))
                 ) && 
                 (
-                    this.FileName == input.FileName ||
-                    (this.FileName != null &&
-                    this.FileName.Equals(input.FileName))
-                ) && 
-                (
-                    this.RecognitionMode == input.RecognitionMode ||
-                    (this.RecognitionMode != null &&
-                    this.RecognitionMode.Equals(input.RecognitionMode))
+                    this.LanguageCode == input.LanguageCode ||
+                    (this.LanguageCode != null &&
+                    this.LanguageCode.Equals(input.LanguageCode))
                 ) && 
                 (
                     this.AllowEmailAddress == input.AllowEmailAddress ||
@@ -466,6 +481,21 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
                     this.AllowMacAddress == input.AllowMacAddress ||
                     (this.AllowMacAddress != null &&
                     this.AllowMacAddress.Equals(input.AllowMacAddress))
+                ) && 
+                (
+                    this.RedactionMode == input.RedactionMode ||
+                    (this.RedactionMode != null &&
+                    this.RedactionMode.Equals(input.RedactionMode))
+                ) && 
+                (
+                    this.TranscriptRedactionMode == input.TranscriptRedactionMode ||
+                    (this.TranscriptRedactionMode != null &&
+                    this.TranscriptRedactionMode.Equals(input.TranscriptRedactionMode))
+                ) && 
+                (
+                    this.SpeechRecognitionMode == input.SpeechRecognitionMode ||
+                    (this.SpeechRecognitionMode != null &&
+                    this.SpeechRecognitionMode.Equals(input.SpeechRecognitionMode))
                 );
         }
 
@@ -480,10 +510,8 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
                 int hashCode = 41;
                 if (this.InputFile != null)
                     hashCode = hashCode * 59 + this.InputFile.GetHashCode();
-                if (this.FileName != null)
-                    hashCode = hashCode * 59 + this.FileName.GetHashCode();
-                if (this.RecognitionMode != null)
-                    hashCode = hashCode * 59 + this.RecognitionMode.GetHashCode();
+                if (this.LanguageCode != null)
+                    hashCode = hashCode * 59 + this.LanguageCode.GetHashCode();
                 if (this.AllowEmailAddress != null)
                     hashCode = hashCode * 59 + this.AllowEmailAddress.GetHashCode();
                 if (this.AllowPhoneNumber != null)
@@ -530,6 +558,12 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Model
                     hashCode = hashCode * 59 + this.AllowIpAddress.GetHashCode();
                 if (this.AllowMacAddress != null)
                     hashCode = hashCode * 59 + this.AllowMacAddress.GetHashCode();
+                if (this.RedactionMode != null)
+                    hashCode = hashCode * 59 + this.RedactionMode.GetHashCode();
+                if (this.TranscriptRedactionMode != null)
+                    hashCode = hashCode * 59 + this.TranscriptRedactionMode.GetHashCode();
+                if (this.SpeechRecognitionMode != null)
+                    hashCode = hashCode * 59 + this.SpeechRecognitionMode.GetHashCode();
                 return hashCode;
             }
         }

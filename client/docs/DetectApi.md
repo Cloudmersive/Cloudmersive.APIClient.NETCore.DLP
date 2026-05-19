@@ -4,11 +4,145 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**DetectAudio**](DetectApi.md#detectaudio) | **POST** /dlp/detect/audio | Detect User Data in Audio File
+[**DetectAudioAdvanced**](DetectApi.md#detectaudioadvanced) | **POST** /dlp/detect/audio/advanced | Detect User Data in Audio File (Advanced)
 [**DetectDocument**](DetectApi.md#detectdocument) | **POST** /dlp/detect/document | Detect User Data in Document Image
 [**DetectDocumentAdvanced**](DetectApi.md#detectdocumentadvanced) | **POST** /dlp/detect/document/advanced | Detect User Data in Document Image (Advanced)
 [**DetectText**](DetectApi.md#detecttext) | **POST** /dlp/detect/text | Detect User Data in Input Text
 [**DetectTextAdvanced**](DetectApi.md#detecttextadvanced) | **POST** /dlp/detect/text/advanced | Detect User Data in Input Text (Advanced)
 
+
+<a name="detectaudio"></a>
+# **DetectAudio**
+> DlpAudioDetectionResponse DetectAudio (DlpAudioDetectionRequest body = null)
+
+Detect User Data in Audio File
+
+Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Cloudmersive.APIClient.NETCore.DLP.Api;
+using Cloudmersive.APIClient.NETCore.DLP.Client;
+using Cloudmersive.APIClient.NETCore.DLP.Model;
+
+namespace Example
+{
+    public class DetectAudioExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: Apikey
+            Configuration.Default.AddApiKey("Apikey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Apikey", "Bearer");
+
+            var apiInstance = new DetectApi();
+            var body = new DlpAudioDetectionRequest(); // DlpAudioDetectionRequest | Input request (optional) 
+
+            try
+            {
+                // Detect User Data in Audio File
+                DlpAudioDetectionResponse result = apiInstance.DetectAudio(body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DetectApi.DetectAudio: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DlpAudioDetectionRequest**](DlpAudioDetectionRequest.md)| Input request | [optional] 
+
+### Return type
+
+[**DlpAudioDetectionResponse**](DlpAudioDetectionResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+<a name="detectaudioadvanced"></a>
+# **DetectAudioAdvanced**
+> DlpAdvancedAudioDetectionResponse DetectAudioAdvanced (DlpAdvancedAudioDetectionRequest body = null)
+
+Detect User Data in Audio File (Advanced)
+
+Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+
+### Example
+```csharp
+using System;
+using System.Diagnostics;
+using Cloudmersive.APIClient.NETCore.DLP.Api;
+using Cloudmersive.APIClient.NETCore.DLP.Client;
+using Cloudmersive.APIClient.NETCore.DLP.Model;
+
+namespace Example
+{
+    public class DetectAudioAdvancedExample
+    {
+        public void main()
+        {
+            // Configure API key authorization: Apikey
+            Configuration.Default.AddApiKey("Apikey", "YOUR_API_KEY");
+            // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+            // Configuration.Default.AddApiKeyPrefix("Apikey", "Bearer");
+
+            var apiInstance = new DetectApi();
+            var body = new DlpAdvancedAudioDetectionRequest(); // DlpAdvancedAudioDetectionRequest | Input request (optional) 
+
+            try
+            {
+                // Detect User Data in Audio File (Advanced)
+                DlpAdvancedAudioDetectionResponse result = apiInstance.DetectAudioAdvanced(body);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DetectApi.DetectAudioAdvanced: " + e.Message );
+            }
+        }
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**DlpAdvancedAudioDetectionRequest**](DlpAdvancedAudioDetectionRequest.md)| Input request | [optional] 
+
+### Return type
+
+[**DlpAdvancedAudioDetectionResponse**](DlpAdvancedAudioDetectionResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 <a name="detectdocument"></a>
 # **DetectDocument**

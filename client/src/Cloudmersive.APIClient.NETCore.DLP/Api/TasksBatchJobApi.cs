@@ -21,278 +21,236 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public interface IDetectApi : IApiAccessor
+    public interface ITasksBatchJobApi : IApiAccessor
     {
         #region Synchronous Operations
         /// <summary>
-        /// Detect User Data in Audio File
+        /// Detect User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAudioDetectionResponse</returns>
-        DlpAudioDetectionResponse DetectAudio (DlpAudioDetectionRequest body = null);
+        /// <returns>DlpBatchJobResult</returns>
+        DlpBatchJobResult DetectAudioAdvancedBatchJob (DlpAdvancedAudioDetectionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Audio File
+        /// Detect User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAudioDetectionResponse</returns>
-        ApiResponse<DlpAudioDetectionResponse> DetectAudioWithHttpInfo (DlpAudioDetectionRequest body = null);
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        ApiResponse<DlpBatchJobResult> DetectAudioAdvancedBatchJobWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null);
         /// <summary>
-        /// Detect User Data in Audio File (Advanced)
+        /// Detect User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAdvancedAudioDetectionResponse</returns>
-        DlpAdvancedAudioDetectionResponse DetectAudioAdvanced (DlpAdvancedAudioDetectionRequest body = null);
+        /// <returns>DlpBatchJobResult</returns>
+        DlpBatchJobResult DetectAudioBatchJob (DlpAudioDetectionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Audio File (Advanced)
+        /// Detect User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAdvancedAudioDetectionResponse</returns>
-        ApiResponse<DlpAdvancedAudioDetectionResponse> DetectAudioAdvancedWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null);
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        ApiResponse<DlpBatchJobResult> DetectAudioBatchJobWithHttpInfo (DlpAudioDetectionRequest body = null);
         /// <summary>
-        /// Detect User Data in Document Image
+        /// Get the status and result of a DLP Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpDetectionResponse</returns>
-        DlpDetectionResponse DetectDocument (DlpDocumentDetectionRequest body = null);
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>DlpBatchJobStatusResult</returns>
+        DlpBatchJobStatusResult GetAsyncJobStatus (string asyncJobID = null);
 
         /// <summary>
-        /// Detect User Data in Document Image
+        /// Get the status and result of a DLP Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpDetectionResponse</returns>
-        ApiResponse<DlpDetectionResponse> DetectDocumentWithHttpInfo (DlpDocumentDetectionRequest body = null);
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>ApiResponse of DlpBatchJobStatusResult</returns>
+        ApiResponse<DlpBatchJobStatusResult> GetAsyncJobStatusWithHttpInfo (string asyncJobID = null);
         /// <summary>
-        /// Detect User Data in Document Image (Advanced)
+        /// Redact User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAdvancedDetectionResponse</returns>
-        DlpAdvancedDetectionResponse DetectDocumentAdvanced (DlpAdvancedDocumentDetectionRequest body = null);
+        /// <returns>DlpBatchJobResult</returns>
+        DlpBatchJobResult RedactAudioAdvancedBatchJob (DlpAdvancedAudioRedactionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Document Image (Advanced)
+        /// Redact User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAdvancedDetectionResponse</returns>
-        ApiResponse<DlpAdvancedDetectionResponse> DetectDocumentAdvancedWithHttpInfo (DlpAdvancedDocumentDetectionRequest body = null);
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        ApiResponse<DlpBatchJobResult> RedactAudioAdvancedBatchJobWithHttpInfo (DlpAdvancedAudioRedactionRequest body = null);
         /// <summary>
-        /// Detect User Data in Input Text
+        /// Redact User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in an input text string using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpDetectionResponse</returns>
-        DlpDetectionResponse DetectText (DlpDetectionRequest body = null);
+        /// <returns>DlpBatchJobResult</returns>
+        DlpBatchJobResult RedactAudioBatchJob (DlpAudioRedactionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Input Text
+        /// Redact User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in an input text string using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpDetectionResponse</returns>
-        ApiResponse<DlpDetectionResponse> DetectTextWithHttpInfo (DlpDetectionRequest body = null);
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced)
-        /// </summary>
-        /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </remarks>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAdvancedDetectionResponse</returns>
-        DlpAdvancedDetectionResponse DetectTextAdvanced (DlpAdvancedDetectionRequest body = null);
-
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced)
-        /// </summary>
-        /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </remarks>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAdvancedDetectionResponse</returns>
-        ApiResponse<DlpAdvancedDetectionResponse> DetectTextAdvancedWithHttpInfo (DlpAdvancedDetectionRequest body = null);
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        ApiResponse<DlpBatchJobResult> RedactAudioBatchJobWithHttpInfo (DlpAudioRedactionRequest body = null);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
-        /// Detect User Data in Audio File
+        /// Detect User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAudioDetectionResponse</returns>
-        System.Threading.Tasks.Task<DlpAudioDetectionResponse> DetectAudioAsync (DlpAudioDetectionRequest body = null);
+        /// <returns>Task of DlpBatchJobResult</returns>
+        System.Threading.Tasks.Task<DlpBatchJobResult> DetectAudioAdvancedBatchJobAsync (DlpAdvancedAudioDetectionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Audio File
+        /// Detect User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAudioDetectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DlpAudioDetectionResponse>> DetectAudioAsyncWithHttpInfo (DlpAudioDetectionRequest body = null);
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> DetectAudioAdvancedBatchJobAsyncWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null);
         /// <summary>
-        /// Detect User Data in Audio File (Advanced)
+        /// Detect User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAdvancedAudioDetectionResponse</returns>
-        System.Threading.Tasks.Task<DlpAdvancedAudioDetectionResponse> DetectAudioAdvancedAsync (DlpAdvancedAudioDetectionRequest body = null);
+        /// <returns>Task of DlpBatchJobResult</returns>
+        System.Threading.Tasks.Task<DlpBatchJobResult> DetectAudioBatchJobAsync (DlpAudioDetectionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Audio File (Advanced)
+        /// Detect User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAdvancedAudioDetectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DlpAdvancedAudioDetectionResponse>> DetectAudioAdvancedAsyncWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null);
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> DetectAudioBatchJobAsyncWithHttpInfo (DlpAudioDetectionRequest body = null);
         /// <summary>
-        /// Detect User Data in Document Image
+        /// Get the status and result of a DLP Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpDetectionResponse</returns>
-        System.Threading.Tasks.Task<DlpDetectionResponse> DetectDocumentAsync (DlpDocumentDetectionRequest body = null);
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>Task of DlpBatchJobStatusResult</returns>
+        System.Threading.Tasks.Task<DlpBatchJobStatusResult> GetAsyncJobStatusAsync (string asyncJobID = null);
 
         /// <summary>
-        /// Detect User Data in Document Image
+        /// Get the status and result of a DLP Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpDetectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DlpDetectionResponse>> DetectDocumentAsyncWithHttpInfo (DlpDocumentDetectionRequest body = null);
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>Task of ApiResponse (DlpBatchJobStatusResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DlpBatchJobStatusResult>> GetAsyncJobStatusAsyncWithHttpInfo (string asyncJobID = null);
         /// <summary>
-        /// Detect User Data in Document Image (Advanced)
+        /// Redact User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAdvancedDetectionResponse</returns>
-        System.Threading.Tasks.Task<DlpAdvancedDetectionResponse> DetectDocumentAdvancedAsync (DlpAdvancedDocumentDetectionRequest body = null);
+        /// <returns>Task of DlpBatchJobResult</returns>
+        System.Threading.Tasks.Task<DlpBatchJobResult> RedactAudioAdvancedBatchJobAsync (DlpAdvancedAudioRedactionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Document Image (Advanced)
+        /// Redact User Data in Audio File (Advanced) as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAdvancedDetectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DlpAdvancedDetectionResponse>> DetectDocumentAdvancedAsyncWithHttpInfo (DlpAdvancedDocumentDetectionRequest body = null);
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> RedactAudioAdvancedBatchJobAsyncWithHttpInfo (DlpAdvancedAudioRedactionRequest body = null);
         /// <summary>
-        /// Detect User Data in Input Text
+        /// Redact User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in an input text string using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpDetectionResponse</returns>
-        System.Threading.Tasks.Task<DlpDetectionResponse> DetectTextAsync (DlpDetectionRequest body = null);
+        /// <returns>Task of DlpBatchJobResult</returns>
+        System.Threading.Tasks.Task<DlpBatchJobResult> RedactAudioBatchJobAsync (DlpAudioRedactionRequest body = null);
 
         /// <summary>
-        /// Detect User Data in Input Text
+        /// Redact User Data in Audio File as a Batch Job
         /// </summary>
         /// <remarks>
-        /// Detects configurable types of user data in an input text string using Advanced AI.
+        /// Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </remarks>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpDetectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DlpDetectionResponse>> DetectTextAsyncWithHttpInfo (DlpDetectionRequest body = null);
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced)
-        /// </summary>
-        /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </remarks>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAdvancedDetectionResponse</returns>
-        System.Threading.Tasks.Task<DlpAdvancedDetectionResponse> DetectTextAdvancedAsync (DlpAdvancedDetectionRequest body = null);
-
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced)
-        /// </summary>
-        /// <remarks>
-        /// Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </remarks>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAdvancedDetectionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DlpAdvancedDetectionResponse>> DetectTextAdvancedAsyncWithHttpInfo (DlpAdvancedDetectionRequest body = null);
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> RedactAudioBatchJobAsyncWithHttpInfo (DlpAudioRedactionRequest body = null);
         #endregion Asynchronous Operations
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public partial class DetectApi : IDetectApi
+    public partial class TasksBatchJobApi : ITasksBatchJobApi
     {
         private Cloudmersive.APIClient.NETCore.DLP.Client.ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DetectApi"/> class.
+        /// Initializes a new instance of the <see cref="TasksBatchJobApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public DetectApi(String basePath)
+        public TasksBatchJobApi(String basePath)
         {
             this.Configuration = new Cloudmersive.APIClient.NETCore.DLP.Client.Configuration { BasePath = basePath };
 
@@ -300,12 +258,12 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="DetectApi"/> class
+        /// Initializes a new instance of the <see cref="TasksBatchJobApi"/> class
         /// using Configuration object
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public DetectApi(Cloudmersive.APIClient.NETCore.DLP.Client.Configuration configuration = null)
+        public TasksBatchJobApi(Cloudmersive.APIClient.NETCore.DLP.Client.Configuration configuration = null)
         {
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Cloudmersive.APIClient.NETCore.DLP.Client.Configuration.Default;
@@ -379,27 +337,27 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
         }
 
         /// <summary>
-        /// Detect User Data in Audio File Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Detect User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAudioDetectionResponse</returns>
-        public DlpAudioDetectionResponse DetectAudio (DlpAudioDetectionRequest body = null)
+        /// <returns>DlpBatchJobResult</returns>
+        public DlpBatchJobResult DetectAudioAdvancedBatchJob (DlpAdvancedAudioDetectionRequest body = null)
         {
-             ApiResponse<DlpAudioDetectionResponse> localVarResponse = DetectAudioWithHttpInfo(body);
+             ApiResponse<DlpBatchJobResult> localVarResponse = DetectAudioAdvancedBatchJobWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Detect User Data in Audio File Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Detect User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAudioDetectionResponse</returns>
-        public ApiResponse< DlpAudioDetectionResponse > DetectAudioWithHttpInfo (DlpAudioDetectionRequest body = null)
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        public ApiResponse< DlpBatchJobResult > DetectAudioAdvancedBatchJobWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/audio";
+            var localVarPath = "./dlp/batch-job/detect/audio/advanced";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -449,38 +407,38 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectAudio", localVarResponse);
+                Exception exception = ExceptionFactory("DetectAudioAdvancedBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpAudioDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAudioDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAudioDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
         /// <summary>
-        /// Detect User Data in Audio File Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Detect User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAudioDetectionResponse</returns>
-        public async System.Threading.Tasks.Task<DlpAudioDetectionResponse> DetectAudioAsync (DlpAudioDetectionRequest body = null)
+        /// <returns>Task of DlpBatchJobResult</returns>
+        public async System.Threading.Tasks.Task<DlpBatchJobResult> DetectAudioAdvancedBatchJobAsync (DlpAdvancedAudioDetectionRequest body = null)
         {
-             ApiResponse<DlpAudioDetectionResponse> localVarResponse = await DetectAudioAsyncWithHttpInfo(body);
+             ApiResponse<DlpBatchJobResult> localVarResponse = await DetectAudioAdvancedBatchJobAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Detect User Data in Audio File Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.
+        /// Detect User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for detecting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAudioDetectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DlpAudioDetectionResponse>> DetectAudioAsyncWithHttpInfo (DlpAudioDetectionRequest body = null)
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> DetectAudioAdvancedBatchJobAsyncWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/audio";
+            var localVarPath = "./dlp/batch-job/detect/audio/advanced";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -530,37 +488,37 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectAudio", localVarResponse);
+                Exception exception = ExceptionFactory("DetectAudioAdvancedBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpAudioDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAudioDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAudioDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
         /// <summary>
-        /// Detect User Data in Audio File (Advanced) Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Detect User Data in Audio File as a Batch Job Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAdvancedAudioDetectionResponse</returns>
-        public DlpAdvancedAudioDetectionResponse DetectAudioAdvanced (DlpAdvancedAudioDetectionRequest body = null)
+        /// <returns>DlpBatchJobResult</returns>
+        public DlpBatchJobResult DetectAudioBatchJob (DlpAudioDetectionRequest body = null)
         {
-             ApiResponse<DlpAdvancedAudioDetectionResponse> localVarResponse = DetectAudioAdvancedWithHttpInfo(body);
+             ApiResponse<DlpBatchJobResult> localVarResponse = DetectAudioBatchJobWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Detect User Data in Audio File (Advanced) Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Detect User Data in Audio File as a Batch Job Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAdvancedAudioDetectionResponse</returns>
-        public ApiResponse< DlpAdvancedAudioDetectionResponse > DetectAudioAdvancedWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null)
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        public ApiResponse< DlpBatchJobResult > DetectAudioBatchJobWithHttpInfo (DlpAudioDetectionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/audio/advanced";
+            var localVarPath = "./dlp/batch-job/detect/audio";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -610,38 +568,38 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectAudioAdvanced", localVarResponse);
+                Exception exception = ExceptionFactory("DetectAudioBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpAdvancedAudioDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAdvancedAudioDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAdvancedAudioDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
         /// <summary>
-        /// Detect User Data in Audio File (Advanced) Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Detect User Data in Audio File as a Batch Job Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAdvancedAudioDetectionResponse</returns>
-        public async System.Threading.Tasks.Task<DlpAdvancedAudioDetectionResponse> DetectAudioAdvancedAsync (DlpAdvancedAudioDetectionRequest body = null)
+        /// <returns>Task of DlpBatchJobResult</returns>
+        public async System.Threading.Tasks.Task<DlpBatchJobResult> DetectAudioBatchJobAsync (DlpAudioDetectionRequest body = null)
         {
-             ApiResponse<DlpAdvancedAudioDetectionResponse> localVarResponse = await DetectAudioAdvancedAsyncWithHttpInfo(body);
+             ApiResponse<DlpBatchJobResult> localVarResponse = await DetectAudioBatchJobAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Detect User Data in Audio File (Advanced) Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 29 configurable types of user data including health-related PHI in the transcript using Advanced AI. Returns the full transcript, token timestamps, detection results, and optional rationale.
+        /// Detect User Data in Audio File as a Batch Job Creates an async batch job for detecting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the result when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA) and detects 23 configurable types of user data in the transcript using Advanced AI. Returns the full transcript, token timestamps, and detection results.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAdvancedAudioDetectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DlpAdvancedAudioDetectionResponse>> DetectAudioAdvancedAsyncWithHttpInfo (DlpAdvancedAudioDetectionRequest body = null)
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> DetectAudioBatchJobAsyncWithHttpInfo (DlpAudioDetectionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/audio/advanced";
+            var localVarPath = "./dlp/batch-job/detect/audio";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -691,37 +649,178 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectAudioAdvanced", localVarResponse);
+                Exception exception = ExceptionFactory("DetectAudioBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpAdvancedAudioDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAdvancedAudioDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAdvancedAudioDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
         /// <summary>
-        /// Detect User Data in Document Image Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Get the status and result of a DLP Batch Job Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpDetectionResponse</returns>
-        public DlpDetectionResponse DetectDocument (DlpDocumentDetectionRequest body = null)
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>DlpBatchJobStatusResult</returns>
+        public DlpBatchJobStatusResult GetAsyncJobStatus (string asyncJobID = null)
         {
-             ApiResponse<DlpDetectionResponse> localVarResponse = DetectDocumentWithHttpInfo(body);
+             ApiResponse<DlpBatchJobStatusResult> localVarResponse = GetAsyncJobStatusWithHttpInfo(asyncJobID);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Detect User Data in Document Image Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Get the status and result of a DLP Batch Job Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>ApiResponse of DlpBatchJobStatusResult</returns>
+        public ApiResponse< DlpBatchJobStatusResult > GetAsyncJobStatusWithHttpInfo (string asyncJobID = null)
+        {
+
+            var localVarPath = "./dlp/batch-job/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asyncJobID != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "AsyncJobID", asyncJobID)); // query parameter
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAsyncJobStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DlpBatchJobStatusResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (DlpBatchJobStatusResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobStatusResult)));
+        }
+
+        /// <summary>
+        /// Get the status and result of a DLP Batch Job Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>Task of DlpBatchJobStatusResult</returns>
+        public async System.Threading.Tasks.Task<DlpBatchJobStatusResult> GetAsyncJobStatusAsync (string asyncJobID = null)
+        {
+             ApiResponse<DlpBatchJobStatusResult> localVarResponse = await GetAsyncJobStatusAsyncWithHttpInfo(asyncJobID);
+             return localVarResponse.Data;
+
+        }
+
+        /// <summary>
+        /// Get the status and result of a DLP Batch Job Returns the result of the Async Job - possible states can be STARTED or COMPLETED.  When COMPLETED, the corresponding result field (detection or redaction result) is populated on the response.  This API is only available for Cloudmersive Managed Instance and Private Cloud deployments.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="asyncJobID">Job ID for the batch job to get the status of (optional)</param>
+        /// <returns>Task of ApiResponse (DlpBatchJobStatusResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DlpBatchJobStatusResult>> GetAsyncJobStatusAsyncWithHttpInfo (string asyncJobID = null)
+        {
+
+            var localVarPath = "./dlp/batch-job/status";
+            var localVarPathParams = new Dictionary<String, String>();
+            var localVarQueryParams = new List<KeyValuePair<String, String>>();
+            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<String, String>();
+            var localVarFileParams = new Dictionary<String, FileParameter>();
+            Object localVarPostBody = null;
+
+            // to determine the Content-Type header
+            String[] localVarHttpContentTypes = new String[] {
+            };
+            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+
+            // to determine the Accept header
+            String[] localVarHttpHeaderAccepts = new String[] {
+                "text/plain",
+                "application/json",
+                "text/json"
+            };
+            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if (localVarHttpHeaderAccept != null)
+                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
+
+            if (asyncJobID != null) localVarQueryParams.AddRange(this.Configuration.ApiClient.ParameterToKeyValuePairs("", "AsyncJobID", asyncJobID)); // query parameter
+
+            // authentication (Apikey) required
+            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
+            {
+                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
+            }
+
+            // make the HTTP request
+            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+                Method.GET, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
+                localVarPathParams, localVarHttpContentType);
+
+            int localVarStatusCode = (int) localVarResponse.StatusCode;
+
+            if (ExceptionFactory != null)
+            {
+                Exception exception = ExceptionFactory("GetAsyncJobStatus", localVarResponse);
+                if (exception != null) throw exception;
+            }
+
+            return new ApiResponse<DlpBatchJobStatusResult>(localVarStatusCode,
+                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
+                (DlpBatchJobStatusResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobStatusResult)));
+        }
+
+        /// <summary>
+        /// Redact User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpDetectionResponse</returns>
-        public ApiResponse< DlpDetectionResponse > DetectDocumentWithHttpInfo (DlpDocumentDetectionRequest body = null)
+        /// <returns>DlpBatchJobResult</returns>
+        public DlpBatchJobResult RedactAudioAdvancedBatchJob (DlpAdvancedAudioRedactionRequest body = null)
+        {
+             ApiResponse<DlpBatchJobResult> localVarResponse = RedactAudioAdvancedBatchJobWithHttpInfo(body);
+             return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Redact User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
+        /// </summary>
+        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="body">Input request (optional)</param>
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        public ApiResponse< DlpBatchJobResult > RedactAudioAdvancedBatchJobWithHttpInfo (DlpAdvancedAudioRedactionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/document";
+            var localVarPath = "./dlp/batch-job/redact/audio/advanced";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -771,38 +870,38 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectDocument", localVarResponse);
+                Exception exception = ExceptionFactory("RedactAudioAdvancedBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
         /// <summary>
-        /// Detect User Data in Document Image Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Redact User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpDetectionResponse</returns>
-        public async System.Threading.Tasks.Task<DlpDetectionResponse> DetectDocumentAsync (DlpDocumentDetectionRequest body = null)
+        /// <returns>Task of DlpBatchJobResult</returns>
+        public async System.Threading.Tasks.Task<DlpBatchJobResult> RedactAudioAdvancedBatchJobAsync (DlpAdvancedAudioRedactionRequest body = null)
         {
-             ApiResponse<DlpDetectionResponse> localVarResponse = await DetectDocumentAsyncWithHttpInfo(body);
+             ApiResponse<DlpBatchJobResult> localVarResponse = await RedactAudioAdvancedBatchJobAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Detect User Data in Document Image Detects configurable types of user data in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Redact User Data in Audio File (Advanced) as a Batch Job Creates an async batch job for redacting user data in an audio file using Advanced detection.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 34 configurable types of user data including health-related PHI in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, redacted segment timestamps, and optional rationale.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpDetectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DlpDetectionResponse>> DetectDocumentAsyncWithHttpInfo (DlpDocumentDetectionRequest body = null)
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> RedactAudioAdvancedBatchJobAsyncWithHttpInfo (DlpAdvancedAudioRedactionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/document";
+            var localVarPath = "./dlp/batch-job/redact/audio/advanced";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -852,37 +951,37 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectDocument", localVarResponse);
+                Exception exception = ExceptionFactory("RedactAudioAdvancedBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
         /// <summary>
-        /// Detect User Data in Document Image (Advanced) Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Redact User Data in Audio File as a Batch Job Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAdvancedDetectionResponse</returns>
-        public DlpAdvancedDetectionResponse DetectDocumentAdvanced (DlpAdvancedDocumentDetectionRequest body = null)
+        /// <returns>DlpBatchJobResult</returns>
+        public DlpBatchJobResult RedactAudioBatchJob (DlpAudioRedactionRequest body = null)
         {
-             ApiResponse<DlpAdvancedDetectionResponse> localVarResponse = DetectDocumentAdvancedWithHttpInfo(body);
+             ApiResponse<DlpBatchJobResult> localVarResponse = RedactAudioBatchJobWithHttpInfo(body);
              return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Detect User Data in Document Image (Advanced) Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Redact User Data in Audio File as a Batch Job Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAdvancedDetectionResponse</returns>
-        public ApiResponse< DlpAdvancedDetectionResponse > DetectDocumentAdvancedWithHttpInfo (DlpAdvancedDocumentDetectionRequest body = null)
+        /// <returns>ApiResponse of DlpBatchJobResult</returns>
+        public ApiResponse< DlpBatchJobResult > RedactAudioBatchJobWithHttpInfo (DlpAudioRedactionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/document/advanced";
+            var localVarPath = "./dlp/batch-job/redact/audio";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -932,38 +1031,38 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectDocumentAdvanced", localVarResponse);
+                Exception exception = ExceptionFactory("RedactAudioBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpAdvancedDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAdvancedDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAdvancedDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
         /// <summary>
-        /// Detect User Data in Document Image (Advanced) Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Redact User Data in Audio File as a Batch Job Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAdvancedDetectionResponse</returns>
-        public async System.Threading.Tasks.Task<DlpAdvancedDetectionResponse> DetectDocumentAdvancedAsync (DlpAdvancedDocumentDetectionRequest body = null)
+        /// <returns>Task of DlpBatchJobResult</returns>
+        public async System.Threading.Tasks.Task<DlpBatchJobResult> RedactAudioBatchJobAsync (DlpAudioRedactionRequest body = null)
         {
-             ApiResponse<DlpAdvancedDetectionResponse> localVarResponse = await DetectDocumentAdvancedAsyncWithHttpInfo(body);
+             ApiResponse<DlpBatchJobResult> localVarResponse = await RedactAudioBatchJobAsyncWithHttpInfo(body);
              return localVarResponse.Data;
 
         }
 
         /// <summary>
-        /// Detect User Data in Document Image (Advanced) Detects 29 configurable types of user data including health-related PHI in a document (PDF, DOC, DOCX, XLS, XLSX, PPT, PPTX, HTML, EML, MSG, PNG, JPG, WEBP) using Advanced AI.
+        /// Redact User Data in Audio File as a Batch Job Creates an async batch job for redacting user data in an audio file.  Use the GetAsyncJobStatus API to check on the status of the job and retrieve the redacted audio and transcript when complete.  Transcribes an audio file (WAV, MP3, M4A, FLAC, OGG, WMA), detects 23 configurable types of user data in the transcript, and redacts audio segments containing PII. Returns the redacted audio, redacted transcript, detection results, and redacted segment timestamps.  Requires Managed Instance or Private Cloud deployment.
         /// </summary>
         /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAdvancedDetectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DlpAdvancedDetectionResponse>> DetectDocumentAdvancedAsyncWithHttpInfo (DlpAdvancedDocumentDetectionRequest body = null)
+        /// <returns>Task of ApiResponse (DlpBatchJobResult)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<DlpBatchJobResult>> RedactAudioBatchJobAsyncWithHttpInfo (DlpAudioRedactionRequest body = null)
         {
 
-            var localVarPath = "./dlp/detect/document/advanced";
+            var localVarPath = "./dlp/batch-job/redact/audio";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
             var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
@@ -1013,335 +1112,13 @@ namespace Cloudmersive.APIClient.NETCore.DLP.Api
 
             if (ExceptionFactory != null)
             {
-                Exception exception = ExceptionFactory("DetectDocumentAdvanced", localVarResponse);
+                Exception exception = ExceptionFactory("RedactAudioBatchJob", localVarResponse);
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<DlpAdvancedDetectionResponse>(localVarStatusCode,
+            return new ApiResponse<DlpBatchJobResult>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAdvancedDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAdvancedDetectionResponse)));
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text Detects configurable types of user data in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpDetectionResponse</returns>
-        public DlpDetectionResponse DetectText (DlpDetectionRequest body = null)
-        {
-             ApiResponse<DlpDetectionResponse> localVarResponse = DetectTextWithHttpInfo(body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text Detects configurable types of user data in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpDetectionResponse</returns>
-        public ApiResponse< DlpDetectionResponse > DetectTextWithHttpInfo (DlpDetectionRequest body = null)
-        {
-
-            var localVarPath = "./dlp/detect/text";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
-            {
-                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DetectText", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<DlpDetectionResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpDetectionResponse)));
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text Detects configurable types of user data in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpDetectionResponse</returns>
-        public async System.Threading.Tasks.Task<DlpDetectionResponse> DetectTextAsync (DlpDetectionRequest body = null)
-        {
-             ApiResponse<DlpDetectionResponse> localVarResponse = await DetectTextAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text Detects configurable types of user data in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpDetectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DlpDetectionResponse>> DetectTextAsyncWithHttpInfo (DlpDetectionRequest body = null)
-        {
-
-            var localVarPath = "./dlp/detect/text";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
-            {
-                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DetectText", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<DlpDetectionResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpDetectionResponse)));
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced) Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>DlpAdvancedDetectionResponse</returns>
-        public DlpAdvancedDetectionResponse DetectTextAdvanced (DlpAdvancedDetectionRequest body = null)
-        {
-             ApiResponse<DlpAdvancedDetectionResponse> localVarResponse = DetectTextAdvancedWithHttpInfo(body);
-             return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced) Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>ApiResponse of DlpAdvancedDetectionResponse</returns>
-        public ApiResponse< DlpAdvancedDetectionResponse > DetectTextAdvancedWithHttpInfo (DlpAdvancedDetectionRequest body = null)
-        {
-
-            var localVarPath = "./dlp/detect/text/advanced";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
-            {
-                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DetectTextAdvanced", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<DlpAdvancedDetectionResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAdvancedDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAdvancedDetectionResponse)));
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced) Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of DlpAdvancedDetectionResponse</returns>
-        public async System.Threading.Tasks.Task<DlpAdvancedDetectionResponse> DetectTextAdvancedAsync (DlpAdvancedDetectionRequest body = null)
-        {
-             ApiResponse<DlpAdvancedDetectionResponse> localVarResponse = await DetectTextAdvancedAsyncWithHttpInfo(body);
-             return localVarResponse.Data;
-
-        }
-
-        /// <summary>
-        /// Detect User Data in Input Text (Advanced) Detects 29 configurable types of user data including health-related PHI in an input text string using Advanced AI.
-        /// </summary>
-        /// <exception cref="Cloudmersive.APIClient.NETCore.DLP.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="body">Input request (optional)</param>
-        /// <returns>Task of ApiResponse (DlpAdvancedDetectionResponse)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<DlpAdvancedDetectionResponse>> DetectTextAdvancedAsyncWithHttpInfo (DlpAdvancedDetectionRequest body = null)
-        {
-
-            var localVarPath = "./dlp/detect/text/advanced";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
-
-            // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
-                "application/json", 
-                "text/json", 
-                "application/_*+json"
-            };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
-
-            // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
-                "text/plain",
-                "application/json",
-                "text/json"
-            };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
-                localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
-
-            if (body != null && body.GetType() != typeof(byte[]))
-            {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(body); // http body (model) parameter
-            }
-            else
-            {
-                localVarPostBody = body; // byte array
-            }
-
-            // authentication (Apikey) required
-            if (!String.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Apikey")))
-            {
-                localVarHeaderParams["Apikey"] = this.Configuration.GetApiKeyWithPrefix("Apikey");
-            }
-
-            // make the HTTP request
-            IRestResponse localVarResponse = (IRestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
-                Method.POST, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
-                localVarPathParams, localVarHttpContentType);
-
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
-
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("DetectTextAdvanced", localVarResponse);
-                if (exception != null) throw exception;
-            }
-
-            return new ApiResponse<DlpAdvancedDetectionResponse>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Key, x => x.Value.ToString()),
-                (DlpAdvancedDetectionResponse) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpAdvancedDetectionResponse)));
+                (DlpBatchJobResult) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(DlpBatchJobResult)));
         }
 
     }
